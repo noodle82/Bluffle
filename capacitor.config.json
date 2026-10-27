@@ -1,0 +1,8 @@
+{
+  "appId": "com.bluffle.game",
+  "appName": "BLUFFLE!",
+  "webDir": "www",
+  "ios": {
+    "contentInset": "automatic"
+  }
+}
