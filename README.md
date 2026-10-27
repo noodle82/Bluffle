@@ -15,3 +15,11 @@ The app currently has a provisional pool of 16 Junior, 12 Family, and 20 Classic
 
 ## Commercial limitations
 No live ads or payments; £3.99 Premium is a preview. No native iOS binary yet. Test on real devices before launch. Existing v3 saved sessions are not migrated to v4; start a new game.
+
+## v4.1: age-gated Little Bluffer Help
+
+- The help button is shown only to the current answer-entry player if their entered age is under 10.
+- Help is optional and hidden by default on every turn. It does not appear during voting.
+- The global help setting has been removed from setup. Question difficulty still uses the selected mode / youngest player's age.
+- Age is entered as a whole number during setup; no date of birth is requested.
+- Answer timer remains off by default.
