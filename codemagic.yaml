@@ -1,3 +1,4 @@
+
 workflows:
   ios-simulator-beta:
     name: BLUFFLE iOS Simulator (unsigned)
@@ -25,3 +26,52 @@ workflows:
     artifacts:
       - build/DerivedData/Build/Products/Debug-iphonesimulator/*.app
       - build/DerivedData/Logs/Build/*.xcactivitylog
+
+  ios-testflight:
+    name: BLUFFLE TestFlight
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+
+    integrations:
+      app_store_connect: bluffle_apple
+
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.bluffle.game
+      node: 22
+      xcode: latest
+
+    scripts:
+      - name: Install JavaScript dependencies
+        script: |
+          npm install --no-audit --no-fund
+
+      - name: Generate native iOS project
+        script: |
+          npx cap add ios
+          npx cap sync ios
+
+      - name: Install CocoaPods dependencies
+        script: |
+          cd ios/App
+          pod install
+
+      - name: Apply Apple signing profiles
+        script: |
+          xcode-project use-profiles
+
+      - name: Build signed iOS application
+        script: |
+          xcode-project build-ipa \
+            --workspace ios/App/App.xcworkspace \
+            --scheme App
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
