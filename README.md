@@ -23,3 +23,7 @@ No live ads or payments; £3.99 Premium is a preview. No native iOS binary yet. 
 - The global help setting has been removed from setup. Question difficulty still uses the selected mode / youngest player's age.
 - Age is entered as a whole number during setup; no date of birth is requested.
 - Answer timer remains off by default.
+
+
+## v4.2 Audio
+Original procedural chiptune music and sound effects use Web Audio, with separate saved on/off switches in Settings and Game Setup. Audio begins after the first tap and is muted when the page is hidden. No audio assets or licences are required.
