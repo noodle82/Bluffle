@@ -10,6 +10,9 @@
 @keyframes last-seconds-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.96)}}
 @media(max-width:420px){.last-seconds{width:82px;padding:8px 6px 10px;border-radius:18px}.last-seconds strong{font-size:48px}.last-seconds small{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.last-seconds strong{animation:none}}
+
+.game-actions{display:flex;justify-content:flex-start;margin:-8px 0 16px}.exit-game{background:#30205b;border:1px solid #ffffff50;border-radius:99px;padding:9px 14px;color:#ffe18b;font-size:12px;font-weight:900}.exit-game:hover{background:#58428d}.exit-game:focus-visible{outline:3px solid #ffd95e;outline-offset:3px}
+.quit-dialog{color:#fff;background:#30205b;border:1px solid #ffffff40;border-radius:25px;box-shadow:0 18px 60px #09051e99;padding:26px;width:min(460px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto}.quit-dialog::backdrop{background:#0a0618d9}.quit-dialog h2{color:#ffd95e;font-size:30px;line-height:1.15;margin:12px 0}.quit-dialog p{color:#d8c8f9;line-height:1.6}.quit-dialog .emoji{font-size:42px}.quit-dialog .btn{white-space:normal}
 </style></head><body><main id="app" class="app" aria-live="polite"></main>
 <script>
 'use strict';
@@ -20,7 +23,35 @@ const $=id=>document.getElementById(id), app=$('app');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let state={screen:'home',players:['Player 1','Player 2','Player 3','Player 4'],rounds:5,round:0,deck:[],answers:[],votes:[],turn:0,selected:-1,scores:[],error:'',stage:'answer',current:null,revealStep:0,mode:'auto',ages:[35,35,10,7],timerSeconds:0,littleHelp:'optional',hintOpen:false,deadline:null};
 function shuffle(a){let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
-function shell(content){app.innerHTML=`<header class="top"><div class="brand">BLUFFLE!</div><div class="pill">${state.screen==='home'||state.screen==='setup'?'🎉 FAMILY EDITION':`ROUND ${state.round+1} / ${state.rounds}`}</div></header>${content}<footer class="footer">BLUFFLE! · Make it up. Make them believe it. · v5.0 beta<nav class="legal-links" aria-label="Help and legal information"><a href="privacy/">Privacy</a><a href="terms/">Terms</a><a href="support/">Support</a><a href="mailto:support@bluffle.co.uk">Email us</a></nav></footer>`;saveSession()}
+function shell(content){app.innerHTML=`<header class="top"><div class="brand">BLUFFLE!</div><div class="pill">${state.screen==='home'||state.screen==='setup'?'🎉 FAMILY EDITION':`ROUND ${state.round+1} / ${state.rounds}`}</div></header>${state.screen!=='home'?`<div class="game-actions"><button type="button" class="exit-game" onclick="requestExitGame()">✕ EXIT GAME</button></div>`:''}${content}<footer class="footer">BLUFFLE! · Make it up. Make them believe it. · v5.0 beta${state.screen==='home'?`<nav class="legal-links" aria-label="Help and legal information"><a href="privacy/">Privacy</a><a href="terms/">Terms</a><a href="support/">Support</a><a href="mailto:support@bluffle.co.uk">Email us</a></nav>`:''}</footer>`;saveSession()}
+
+function requestExitGame(){
+ if(state.screen==='home'||document.getElementById('quitGameDialog'))return;
+ const remaining=state.screen==='answer'&&state.deadline?Math.max(0,state.deadline-Date.now()):null;
+ clearInterval(timerHandle);timerHandle=null;
+ const dialog=document.createElement('dialog');
+ dialog.id='quitGameDialog';dialog.className='quit-dialog';
+ dialog.setAttribute('aria-labelledby','quitGameTitle');dialog.setAttribute('aria-describedby','quitGameDescription');
+ dialog.innerHTML='<div class="emoji" aria-hidden="true">🎭</div><h2 id="quitGameTitle">Leave this game?</h2><p id="quitGameDescription">Your current game and scores will be cleared. You’ll return to the home screen.</p><button type="button" id="keepPlaying" class="btn" autofocus>KEEP PLAYING</button><button type="button" id="confirmExitGame" class="btn pink">EXIT TO HOME</button>';
+ document.body.appendChild(dialog);
+ dialog.querySelector('#keepPlaying').addEventListener('click',()=>dialog.close('stay'));
+ dialog.querySelector('#confirmExitGame').addEventListener('click',()=>dialog.close('quit'));
+ dialog.addEventListener('cancel',event=>{event.preventDefault();dialog.close('stay')});
+ dialog.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();dialog.close('stay')}});
+ dialog.addEventListener('close',()=>{
+  const quit=dialog.returnValue==='quit';dialog.remove();
+  if(quit){
+   clearInterval(timerHandle);timerHandle=null;
+   state={...state,screen:'home',round:0,deck:[],answers:[],votes:[],turn:0,selected:-1,scores:[],error:'',stage:'answer',current:null,revealStep:0,deadline:null,timerExpired:false,options:[],gains:[],hintOpen:false};
+   try{localStorage.removeItem(SAVE_KEY)}catch(e){}
+   render();
+  }else if(remaining!==null&&state.screen==='answer'){
+   state.deadline=Date.now()+remaining;tickTimer();
+  }
+ },{once:true});
+ dialog.showModal();
+}
+
 function home(){shell(`<section class="card"><div class="emoji">🎭</div><h1 class="hero">Can you <span class="accent">pull it off?</span></h1><p class="subtitle">Make up a convincing answer. Fool your family. Spot the truth. Every player you fool earns you a point!</p><button class="btn" onclick="setup()">LET'S PLAY →</button><p class="help">Pass one phone or tablet around. Each player writes a secret bluff, then everyone votes privately. Your free starter questions are included for offline play.</p></section>`)}
 function setup(){state.screen='setup';render()}
 function addPlayer(){if(state.players.length>=10)return;state.players.push(`Player ${state.players.length+1}`);state.ages.push(10);render()}
