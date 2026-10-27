@@ -1,10 +1,11 @@
 {
-  "name": "BLUFFLE!",
+  "name": "BLUFFLE! Family Party Game",
   "short_name": "BLUFFLE!",
-  "start_url": "./index.html",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#170f35",
-  "theme_color": "#291747",
+  "theme_color": "#211447",
   "icons": [
     {
       "src": "icon-192.png",

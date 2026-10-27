@@ -1,28 +1,17 @@
-# BLUFFLE! — Commercial Foundation v3
+# BLUFFLE! v4 — iPad-friendly game build
 
-## What works
-- Complete one-device game from the original prototype, with 20-question free prototype pool.
-- Private pass-and-play entry, anonymous voting, one-by-one reveals, 1 point for correct answer and 1 per player fooled.
-- Local session recovery across reloads. Sensitive entry/vote screens resume behind a handoff.
-- Premium £3.99 **preview only**, with no checkout, entitlement unlock, ads or analytics.
-- Installable web-app manifest and icons when hosted over HTTPS.
+## Install / update GitHub Pages
+Upload **index.html**, **manifest.webmanifest**, **icon-192.png**, **icon-512.png** to the **root** of your existing `noodle82/Bluffle` repository on the `main` branch. Replace the older files with the same names. Do not upload the ZIP itself. Wait for Pages deployment, then refresh https://noodle82.github.io/Bluffle/ (Safari may cache the older version).
 
-## iPad-only workflow
-1. Create a GitHub account and repository called `bluffle`.
-2. Upload the files in this directory into the repository using Safari or a browser-based IDE such as github.dev.
-3. Enable GitHub Pages under Settings > Pages > Deploy from a branch (main/root).
-4. Open the published HTTPS URL in Safari on iPad, then Share > Add to Home Screen.
-5. Test complete games and send changes through GitHub. Keep the source private until ready if you prefer; GitHub Pages access depends on repository and plan.
-6. For the native iOS build, connect the repo to a cloud Mac CI service such as Codemagic. Add Capacitor configuration and native iOS project in a cloud dev environment; configure Apple certificates and App Store Connect. Do not upload secrets to the repo.
+## New gameplay settings
+- Question mode: automatic by youngest player's age (7–8 Junior, 9–12 Family, 13+ Classic), or manually choose Junior / Family / Classic.
+- Ages selected for each player at setup. Ages are used only locally for question selection.
+- Answer timer: Off by default; optional 30/60/90/120 seconds. If time expires with a valid draft, it is submitted; otherwise player may finish or skip.
+- Little Bluffer Help: Optional by default; Always show; Off. Hints explain the question but never disclose the answer.
+- Preserved: private handoffs, answer entry, secret voting, one-by-one reveal, scoring, game totals, local recovery, Premium preview.
 
-## Required before App Store submission
-- Apple Developer account and App Store Connect app record.
-- Capacitor native wrapper and reproducible cloud iOS builds.
-- Apple StoreKit non-consumable product ID `com.bluffle.premium_lifetime`; use verified store entitlement and Restore Purchases, not a local boolean.
-- AdMob integration with consent, child-appropriate targeting and test ad IDs during development; ads only between rounds.
-- Proper privacy policy, App Privacy disclosures, age-rating and review of UK children/data rules.
-- Full question-bank research and source review. Existing prototype content is NOT fact-checked for publication.
-- Accessibility, device QA, App Store screenshots, purchase sandbox tests and review submission.
+## Questions
+The app currently has a provisional pool of 16 Junior, 12 Family, and 20 Classic questions. The Family mode draws from both Junior and Family pools. Questions are illustrative and require independent fact/source/editorial verification before publication. `question-template.csv` is a template for the owner's questions; CSV import is **not yet implemented**. The current bank is embedded in `index.html`.
 
-## Important
-This is a working **web prototype with commercial scaffolding**, not an App Store binary. The premium dialog does not charge money. No ads are shown. Local storage is not encrypted; avoid using real sensitive information in player names or answers.
+## Commercial limitations
+No live ads or payments; £3.99 Premium is a preview. No native iOS binary yet. Test on real devices before launch. Existing v3 saved sessions are not migrated to v4; start a new game.
