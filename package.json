@@ -5,7 +5,8 @@
   "description": "BLUFFLE! family party game iOS beta",
   "scripts": {
     "cap:sync": "cap sync ios",
-    "cap:add": "cap add ios"
+    "cap:add": "cap add ios",
+    "capacitor:sync:after": "node scripts/apply-bluffle-icon.mjs"
   },
   "dependencies": {
     "@capacitor/core": "^7.4.0",
