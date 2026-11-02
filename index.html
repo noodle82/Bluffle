@@ -90,6 +90,23 @@
 /* Approved soft pink separates the bluff card from yellow actions and green truth. */
 .rx-reveal:not(.rx-truth) .rx-front{background:#ffe0eb;color:#321747}
 .rx-reveal:not(.rx-truth) .rx-back{background:#ffc2d6;color:#321747}
+.startup-dialog.startup-leaving{animation:introLogoFade var(--intro-fade-duration,850ms) ease-in-out both;pointer-events:none}
+.startup-dialog.startup-leaving::backdrop{animation:introBackdropFade var(--intro-fade-duration,850ms) ease-in-out both}
+.intro-home-arrival{animation:introHomeFade var(--intro-fade-duration,850ms) ease-out both}
+@keyframes introLogoFade{from{opacity:1}to{opacity:0}}
+@keyframes introBackdropFade{from{background-color:rgba(23,15,53,1)}to{background-color:rgba(23,15,53,0)}}
+@keyframes introHomeFade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.champion-reveal{opacity:1;transition:opacity .18s ease-out;padding:7px 0}
+.champion-reveal.champion-awaiting{opacity:0}
+.champion-names{display:block;font-size:clamp(28px,8vw,36px);font-weight:900;line-height:1.4;overflow-wrap:anywhere;transform-origin:center}
+.champion-score{display:block;margin-top:18px}
+.champion-name-pop{animation:championNamePop .78s cubic-bezier(.2,.8,.2,1) both}
+@keyframes championNamePop{0%{opacity:0;transform:scale(1)}22%{opacity:1;transform:scale(1)}52%{opacity:1;transform:scale(var(--champion-peak,1.12))}100%{opacity:1;transform:scale(1)}}
+.champion-confetti{position:fixed;inset:0;width:100%;height:100%;z-index:90;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.intro-home-arrival{animation-name:introHomeFadeReduced}.champion-name-pop{animation:championNameFade .18s ease-out both}.champion-reveal{transition:none}}
+@keyframes introHomeFadeReduced{from{opacity:0}to{opacity:1}}
+@keyframes championNameFade{from{opacity:0}to{opacity:1}}
+
 </style></head><body><main id="app" class="app" aria-live="polite"></main>
 <script>
 'use strict';
@@ -107,14 +124,14 @@ const SAVE_KEY='bluffle.session.v5.1.freepack1'; // Keep and migrate existing lo
 const PRODUCT_ID='com.bluffle.premium_lifetime';
 const FREE_QUESTIONS=JUNIOR_BANK.length+FAMILY_BANK.length+BANK.length;
 const ENTITLEMENTS={premium:false};
-function freshState(){return {experienceVersion:53,screen:'home',players:['','','',''],littleHelp:[false,false,false,false],rounds:5,round:0,deck:[],answers:[],votes:[],turn:0,selected:-1,scores:[],error:'',stage:'answer',current:null,mode:'classic',timerSeconds:0,hintOpen:false,deadline:null,timerExpired:false,revealStep:0,revealPhase:'ready',revealCountdown:3,revealElapsed:0,roundBaseScores:[],seenQuestionIds:[],hasScored:false,history:[],reviewRound:4}}
+function freshState(){return {experienceVersion:53,screen:'home',players:['','','',''],littleHelp:[false,false,false,false],rounds:5,round:0,deck:[],answers:[],votes:[],turn:0,selected:-1,scores:[],error:'',stage:'answer',current:null,mode:'classic',timerSeconds:0,hintOpen:false,deadline:null,timerExpired:false,revealStep:0,revealPhase:'ready',revealCountdown:3,revealElapsed:0,roundBaseScores:[],seenQuestionIds:[],hasScored:false,history:[],reviewRound:4,championCelebrated:false}}
 let state=freshState(),timerHandle=null,revealHandle=null,revealDueAt=null,revealToken=0;
 const pauseReasons=new Set();let pausedClocks=null;
 function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
 function shell(content){
  const previous=app.dataset.screen,privatePlay=['answer','vote','handoff','voteIntro'].includes(state.screen);
  app.dataset.screen=state.screen;
- app.innerHTML=`<header class="top ${privatePlay?'top-private':''}">${privatePlay?`<span class="round-label">ROUND ${state.round+1} / ${state.rounds}</span>`:`<div class="brand"><img class="mask-inline" src="${MASK_URL}" alt="" width="27" height="27">BLUFFLE!</div>`}<div class="header-actions">${state.screen!=='home'?'<button type="button" class="exit-game" onclick="requestExitGame()" aria-label="Exit game">✕ EXIT</button>':''}<button type="button" class="settings-button" onclick="showSettings()" aria-haspopup="dialog" aria-label="Open settings">⚙ SETTINGS</button></div></header>${content}<footer class="footer">BLUFFLE! · Make it up. Make them believe it.<br>v5.8 beta · A softer side of bluff.</footer>`;
+ app.innerHTML=`<header class="top ${privatePlay?'top-private':''}">${privatePlay?`<span class="round-label">ROUND ${state.round+1} / ${state.rounds}</span>`:`<div class="brand"><img class="mask-inline" src="${MASK_URL}" alt="" width="27" height="27">BLUFFLE!</div>`}<div class="header-actions">${state.screen!=='home'?'<button type="button" class="exit-game" onclick="requestExitGame()" aria-label="Exit game">✕ EXIT</button>':''}<button type="button" class="settings-button" onclick="showSettings()" aria-haspopup="dialog" aria-label="Open settings">⚙ SETTINGS</button></div></header>${content}<footer class="footer">BLUFFLE! · Make it up. Make them believe it.<br>v5.9 beta · A little more theatre.</footer>`;
  if(previous!==state.screen)window.scrollTo({top:0,behavior:'instant'});
  saveSession();
 }
@@ -401,8 +418,8 @@ function updateRevealBoard(scene,time){
 }
 window.addEventListener('resize',()=>{if(state.screen==='reveal'&&revealScene().kind==='board'){revealGeometry=null;updateRevealFrame()}});
 
-function advance(){if(state.screen!=='scores')return;state.round++;if(state.round>=state.rounds){state.screen='final';render();effect('win')}else nextRound()}
-function render(){const s=state;switch(s.screen){
+function advance(){if(state.screen!=='scores')return;state.round++;if(state.round>=state.rounds){state.screen='final';render()}else nextRound()}
+function render(){cancelChampionPresentation();const s=state;switch(s.screen){
  case 'home':home();break;
  case 'setup':shell(`<section class="card"><span class="tag">ASSEMBLE YOUR SUSPECTS</span><h1 class="hero">Who’s bringing<br><span class="accent">the nonsense?</span></h1><p class="subtitle">3–10 players. Aliases welcome. Tick Little Bluffer Help for anyone who’d like a nudge.</p>${s.players.map((p,i)=>`<div class="row player"><input aria-label="Player ${i+1} name" class="input" maxlength="24" autocomplete="off" spellcheck="false" placeholder="Player ${i+1}" value="${esc(p)}" oninput="updatePlayer(${i},this.value)"><label class="player-help"><input type="checkbox" aria-label="Little Bluffer Help for player ${i+1}" ${s.littleHelp[i]?'checked':''} onchange="updateLittleHelp(${i},this.checked)"><span>Little Bluffer<br>Help</span></label><button type="button" class="btn secondary small" aria-label="Remove player ${i+1}" onclick="removePlayer(${i})" ${s.players.length<=3?'disabled':''}>✕</button></div>`).join('')}<button class="btn secondary" onclick="addPlayer()" ${s.players.length>=10?'disabled':''}>+ ADD A BLUFFER</button><fieldset class="mode-picker"><legend>Choose your question mode</legend>${[['kids','Kids','Gentler questions. Wild imaginations.',JUNIOR_BANK.length],['classic','Classic','The full mixed bag. Bring your poker face.',FREE_QUESTIONS]].map(([value,label,detail,count])=>`<label class="mode-choice"><input type="radio" name="questionMode" value="${value}" ${s.mode===value?'checked':''} onchange="setGameSetting('mode',this.value)"><span><strong>${label}</strong><small>${detail}<br>5 question choices per round</small></span></label>`).join('')}</fieldset><label class="setup-label">Answer time limit<select class="input" onchange="setGameSetting('timerSeconds',Number(this.value))">${[[0,'Off — let the nonsense breathe'],[30,'30 seconds'],[60,'60 seconds'],[90,'90 seconds'],[120,'2 minutes']].map(([v,l])=>`<option value="${v}" ${s.timerSeconds===v?'selected':''}>${l}</option>`).join('')}</select></label><div class="error" role="alert">${esc(s.error)}</div><button class="btn" onclick="start()">LET THE TALL TALES BEGIN →</button></section>`);break;
  case 'question':shell(`<section class="card question-preview">${questionChangeButton()}<span class="tag">ROUND ${s.round+1} · ${esc(s.current[0])} · ${s.mode==='kids'?'KIDS':'CLASSIC'}</span><h1>Your question</h1><div class="question">${esc(s.current[1])}</div><button class="btn" onclick="beginBluffing()">LET’S BLUFF →</button></section>`);break;
@@ -413,7 +430,7 @@ function render(){const s=state;switch(s.screen){
  case 'reveal':renderReveal();break;
  case 'roundDetails':renderRoundDetails();break;
  case 'scores':shell(`<section class="card"><span class="tag">THE NUMBERS DON’T BLUFF</span><h1 class="hero">The overall<br><span class="accent">scoreboard.</span></h1>${s.players.map((p,i)=>({p,i,score:s.scores[i]})).sort((a,b)=>b.score-a.score).map((x,rank)=>`<div class="score"><span>${['🥇','🥈','🥉'][rank]||'⭐'} ${esc(x.p)}</span><strong>${x.score}</strong></div>`).join('')}<button class="btn" onclick="advance()">${s.round+1===s.rounds?'CROWN THE CHAMPION →':'ANOTHER ROUND OF NONSENSE →'}</button></section>`);break;
- case 'final':{const max=Math.max(...s.scores),winners=s.players.filter((p,i)=>s.scores[i]===max);shell(`<section class="card"><img class="bluffle-trophy" src="assets/bluffle-trophy-v2.svg?v=v56" alt="The golden BLUFFLE mask trophy" width="140" height="180"><span class="tag">THE BLUFF STOPS HERE</span><h1 class="hero">${winners.length>1?'A shared throne.':'All hail the'}<br><span class="accent">${winners.length>1?'Double the nerve.':'chief of disbelief.'}</span></h1><div class="winner">${winners.map(esc).join(' & ')}<br><span class="counter">${max} ${max===1?'point':'points'}</span></div><p class="subtitle">${winners.length>1?'Equally convincing. Equally untrustworthy. We mean that affectionately.':'A thoroughly questionable performance. A thoroughly deserved victory.'}</p><div class="winner-actions"><button class="btn secondary" onclick="showRoundDetails()">REVIEW ROUND DETAILS →</button><button class="btn" onclick="setup()">DEMAND A REMATCH →</button><button class="home-link" onclick="clearActiveGame()">HOME</button></div></section>`);break}
+ case 'final':{const max=Math.max(...s.scores),winners=s.players.filter((p,i)=>s.scores[i]===max);shell(`<section class="card"><img class="bluffle-trophy" src="assets/bluffle-trophy-v2.svg?v=v56" alt="The golden BLUFFLE mask trophy" width="140" height="180"><span class="tag">THE BLUFF STOPS HERE</span><h1 class="hero">${winners.length>1?'A shared throne.':'All hail the'}<br><span class="accent">${winners.length>1?'Double the nerve.':'chief of disbelief.'}</span></h1><div id="championWinner" class="winner champion-reveal champion-awaiting" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true"><span class="champion-names">${winners.map(esc).join(' & ')}</span><span class="counter champion-score">${max} ${max===1?'point':'points'}</span></div><p class="subtitle">${winners.length>1?'Equally convincing. Equally untrustworthy. We mean that affectionately.':'A thoroughly questionable performance. A thoroughly deserved victory.'}</p><div class="winner-actions"><button class="btn secondary" onclick="showRoundDetails()">REVIEW ROUND DETAILS →</button><button class="btn" onclick="setup()">DEMAND A REMATCH →</button><button class="home-link" onclick="clearActiveGame()">HOME</button></div></section>`);beginChampionReveal();break}
 }}
 function saveSession(){try{localStorage.removeItem(SAVE_KEY)}catch(e){/* Names and gameplay remain in memory only. */}}
 
@@ -427,7 +444,7 @@ const QUESTION_CHOICES={free:5,premium:25};
 const FREE_ROUND_IDS={"kids":[["V5-J010","BLF-0224","V5-J009","V5-J002","V5-J011"],["MOV-009","BLF-0095","V5-J012","V5-J007","V5-J016"],["V5-J006","MOV-003","BLF-0344","V5-J028","BLF-0093"],["V5-J004","BLF-0364","BLF-0083","MOV-006","BLF-0087"],["BLF-0299","V5-J001","BLF-0081","BLF-0144","V5-J027"]],"classic":[["V5-J011","V5-C011","V5-F010","PLAY-011","V5-F009"],["V5-F002","V5-J012","BLF-0369","BLF-0138","BLF-0153"],["MOV-002","V5-F004","BLF-0162","BLF-0001","BLF-0210"],["V5-F005","V5-F008","V5-J027","BLF-0081","BLF-0123"],["V5-F001","V5-J016","BLF-0144","BLF-0137","MOV-006"]]};
 function questionsForRound(round=state.round){const byId=new Map(poolForMode().map(q=>[q[5],q]));return FREE_ROUND_IDS[state.mode][round].map(id=>byId.get(id)).filter(Boolean)}
 function captureRound(){state.history.push({round:state.round,question:[...state.current],players:[...state.players],options:state.options.map(o=>({...o})),votes:[...state.votes],gains:[...state.gains],totals:[...state.scores]})}
-function crownChampion(){if(state.screen!=='reveal'||revealScene().kind!=='truth'||state.round!==4||state.revealPhase!=='finished')return;clearRevealTimer();state.screen='final';restoreMusicLevel();render();effect('win')}
+function crownChampion(){if(state.screen!=='reveal'||revealScene().kind!=='truth'||state.round!==4||state.revealPhase!=='finished')return;clearRevealTimer();state.screen='final';restoreMusicLevel();render()}
 function showRoundDetails(index=state.history.length-1){if(!['final','roundDetails'].includes(state.screen)||!state.history[index])return;state.reviewRound=index;state.screen='roundDetails';render()}
 function returnToChampion(){if(state.screen!=='roundDetails')return;state.screen='final';render()}
 function renderRoundDetails(){
@@ -476,7 +493,7 @@ async function startStartup(){
 }
 
 async function unlockStartupAudio(){
- const d=$('startupDialog');if(!d||d.dataset.brandPlayed==='true'||d.dataset.unlocking||!audioPrefs.effects)return;
+ const d=$('startupDialog');if(!d||d.dataset.leaving==='true'||d.dataset.brandPlayed==='true'||d.dataset.unlocking||!audioPrefs.effects)return;
  d.dataset.unlocking='true';ensureAudio();try{await audioCtx?.resume()}catch(e){delete d.dataset.unlocking;return}
  if(!$('startupDialog')||audioCtx?.state!=='running'){delete d.dataset.unlocking;return}
  cancelAnimationFrame(startupFrame);startupFrame=null;startupToken++;
@@ -484,7 +501,59 @@ async function unlockStartupAudio(){
  delete d.dataset.started;delete d.dataset.unlocking;startStartup();
 }
 
-function finishStartup(){startupToken++;cancelAnimationFrame(startupFrame);startupFrame=null;startupSources.forEach(s=>{try{s.stop()}catch(e){}});startupSources=[];const d=$('startupDialog');if(d){if(d._startWhenVisible)document.removeEventListener('visibilitychange',d._startWhenVisible);d.close();d.remove()}startupActive=false;syncMusic()}
+
+let startupExitTimer=null,championFrame=null,championRun=0,confettiFrame=null,confettiCanvas=null;
+function finishStartup(immediate=false){
+ const d=$('startupDialog');if(d?.dataset.leaving==='true'&&!immediate)return;
+ startupToken++;cancelAnimationFrame(startupFrame);startupFrame=null;
+ startupSources.forEach(s=>{try{s.stop()}catch(e){}});startupSources=[];
+ if(d?._startWhenVisible)document.removeEventListener('visibilitychange',d._startWhenVisible);
+ const complete=()=>{clearTimeout(startupExitTimer);startupExitTimer=null;if(d?.isConnected){d.close();d.remove()}app.classList.remove('intro-home-arrival');app.style.removeProperty('--intro-fade-duration');startupActive=false;syncMusic()};
+ if(!d||immediate||document.hidden){complete();return}
+ d.dataset.leaving='true';const duration=revealReducedMotion()?150:850;
+ d.style.setProperty('--intro-fade-duration',duration+'ms');app.style.setProperty('--intro-fade-duration',duration+'ms');
+ d.classList.add('startup-leaving');app.classList.add('intro-home-arrival');
+ startupActive=false;syncMusic();startupExitTimer=setTimeout(complete,duration);
+}
+function cancelChampionPresentation(){
+ championRun++;cancelAnimationFrame(championFrame);championFrame=null;
+ cancelAnimationFrame(confettiFrame);confettiFrame=null;confettiCanvas?.remove();confettiCanvas=null;
+}
+function beginChampionReveal(){
+ const panel=$('championWinner');if(!panel)return;
+ if(state.championCelebrated){panel.classList.remove('champion-awaiting');panel.setAttribute('aria-hidden','false');return}
+ const run=championRun;let last=null,elapsed=0;
+ const frame=now=>{
+  if(run!==championRun||state.screen!=='final'||!panel.isConnected)return;
+  if(!document.hidden&&!pauseReasons.size&&last!==null)elapsed+=Math.min(100,Math.max(0,now-last));last=now;
+  if(elapsed>=650){
+   panel.classList.remove('champion-awaiting');panel.setAttribute('aria-hidden','false');const names=panel.querySelector('.champion-names');names.style.setProperty('--champion-peak',Math.min(1.12,1+30/Math.max(1,names.getBoundingClientRect().height)).toFixed(3));names.classList.add('champion-name-pop');
+   state.championCelebrated=true;championFrame=null;effect('win');startChampionConfetti(run);return;
+  }
+  championFrame=requestAnimationFrame(frame);
+ };
+ championFrame=requestAnimationFrame(frame);
+}
+function startChampionConfetti(run){
+ if(revealReducedMotion())return;
+ const canvas=document.createElement('canvas');canvas.className='champion-confetti';canvas.setAttribute('aria-hidden','true');document.body.appendChild(canvas);confettiCanvas=canvas;
+ const ctx=canvas.getContext('2d');if(!ctx){canvas.remove();confettiCanvas=null;return}
+ const colours=['#ffd95e','#ff699a','#b995ff','#76e4ab'];
+ const pieces=Array.from({length:80},(_,i)=>({x:innerWidth*(i%2?.78:.22),y:Math.min(innerHeight*.32,220),vx:(i%2?-1:1)*(80+Math.random()*200)+(Math.random()-.5)*70,vy:-180-Math.random()*270,angle:Math.random()*Math.PI,spin:(Math.random()-.5)*12,w:4+Math.random()*5,h:3+Math.random()*5,colour:colours[i%colours.length]}));
+ let last=null,elapsed=0;
+ const finish=()=>{canvas.remove();if(confettiCanvas===canvas){confettiCanvas=null;confettiFrame=null}};
+ const frame=now=>{
+  if(run!==championRun||state.screen!=='final'||!canvas.isConnected||revealReducedMotion()){finish();return}
+  const dt=last===null?0:Math.min(.04,Math.max(0,(now-last)/1000));last=now;
+  if(document.hidden||pauseReasons.size){confettiFrame=requestAnimationFrame(frame);return}
+  elapsed+=dt;const width=innerWidth,height=innerHeight,scale=Math.min(2,devicePixelRatio||1);
+  if(canvas.width!==Math.round(width*scale)||canvas.height!==Math.round(height*scale)){canvas.width=Math.round(width*scale);canvas.height=Math.round(height*scale);ctx.setTransform(scale,0,0,scale,0,0)}
+  ctx.clearRect(0,0,width,height);ctx.globalAlpha=Math.min(1,Math.max(0,(3-elapsed)/.7));
+  for(const p of pieces){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=450*dt;p.angle+=p.spin*dt;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle);ctx.fillStyle=p.colour;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore()}
+  if(elapsed>=3){finish();return}confettiFrame=requestAnimationFrame(frame);
+ };
+ confettiFrame=requestAnimationFrame(frame);
+}
 
 // BLUFFLE! audio: synthesized effects plus the approved bundled music loop.
 const AUDIO_KEY='bluffle_audio_v1';
@@ -535,7 +604,7 @@ function startMusic(){
  const source=audioCtx.createBufferSource(),gain=audioCtx.createGain();
  source.buffer=musicBuffer;source.loop=true;
  gain.gain.setValueAtTime(0,audioCtx.currentTime);
- gain.gain.linearRampToValueAtTime(currentMusicVolume(),audioCtx.currentTime+.12);
+ gain.gain.linearRampToValueAtTime(currentMusicVolume(),audioCtx.currentTime+($('startupDialog')?.dataset.leaving==='true' ? 0.8 : 0.12));
  source.connect(gain);gain.connect(audioCtx.destination);
  musicStartedAt=audioCtx.currentTime;
  source.start(musicStartedAt,musicOffset%musicBuffer.duration);
