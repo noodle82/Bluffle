@@ -110,6 +110,8 @@
 
 /* Home-screen explainer: native disclosure, closed until requested. */
 .how-to-bluff{margin:20px 0 16px;border:1px solid #ffffff30;border-radius:15px;background:#25194c}.how-to-bluff summary{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:48px;padding:13px 16px;list-style:none;cursor:pointer;color:#ffe18b;font-weight:850;font-size:16px;border-radius:14px}.how-to-bluff summary::-webkit-details-marker{display:none}.how-to-bluff summary:focus-visible{outline:3px solid #ffd95e;outline-offset:3px}.how-chevron{font-size:23px;line-height:1}.how-to-bluff[open] .how-chevron{transform:rotate(180deg)}.how-content{padding:0 16px 16px;color:#e5d6ff;font-size:14px;line-height:1.55}.how-intro{margin:0 0 15px}.how-content ol{padding-left:23px;margin:0}.how-content li{padding-left:4px;margin:0 0 14px}.how-content li::marker{color:#ffb1d1;font-weight:900}.how-content li strong{color:#fff}.how-mask{color:#ffdc77;font-weight:800}.how-tick{color:#97efc2;font-weight:800}.how-tip{margin:16px 0 0;padding-top:13px;border-top:1px solid #ffffff24;font-size:12px;color:#cbb9ed}
+/* Match the opening wordmark to the shared in-game brand angle. */
+.startup-word{transform:rotate(-3deg)}
 </style></head><body><main id="app" class="app" aria-live="polite"></main>
 <script>
 'use strict';
@@ -134,7 +136,7 @@ function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.fl
 function shell(content){
  const previous=app.dataset.screen,privatePlay=['answer','vote','handoff','voteIntro'].includes(state.screen);
  app.dataset.screen=state.screen;
- app.innerHTML=`<header class="top ${privatePlay?'top-private':''}">${privatePlay?`<span class="round-label">ROUND ${state.round+1} / ${state.rounds}</span>`:`<div class="brand"><img class="mask-inline" src="${MASK_URL}" alt="" width="27" height="27">BLUFFLE!</div>`}<div class="header-actions">${state.screen!=='home'?'<button type="button" class="exit-game" onclick="requestExitGame()" aria-label="Exit game">✕ EXIT</button>':''}<button type="button" class="settings-button" onclick="showSettings()" aria-haspopup="dialog" aria-label="Open settings">⚙ SETTINGS</button></div></header>${content}<footer class="footer">BLUFFLE! · Make it up. Make them believe it.<br>v5.11 beta · How to bluff · Reviewed 355 questions</footer>`;
+ app.innerHTML=`<header class="top ${privatePlay?'top-private':''}">${privatePlay?`<span class="round-label">ROUND ${state.round+1} / ${state.rounds}</span>`:`<div class="brand"><img class="mask-inline" src="${MASK_URL}" alt="" width="27" height="27">BLUFFLE!</div>`}<div class="header-actions">${state.screen!=='home'?'<button type="button" class="exit-game" onclick="requestExitGame()" aria-label="Exit game">✕ EXIT</button>':''}<button type="button" class="settings-button" onclick="showSettings()" aria-haspopup="dialog" aria-label="Open settings">⚙ SETTINGS</button></div></header>${content}<footer class="footer">BLUFFLE! · Make it up. Make them believe it.<br>v5.12 beta · Matched logo angle · Reviewed 355 questions</footer>`;
  if(previous!==state.screen)window.scrollTo({top:0,behavior:'instant'});
  saveSession();
 }
