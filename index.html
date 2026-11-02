@@ -13,6 +13,20 @@
 
 .game-actions{display:flex;justify-content:flex-start;margin:-8px 0 16px}.exit-game{background:#30205b;border:1px solid #ffffff50;border-radius:99px;padding:9px 14px;color:#ffe18b;font-size:12px;font-weight:900}.exit-game:hover{background:#58428d}.exit-game:focus-visible{outline:3px solid #ffd95e;outline-offset:3px}
 .quit-dialog{color:#fff;background:#30205b;border:1px solid #ffffff40;border-radius:25px;box-shadow:0 18px 60px #09051e99;padding:26px;width:min(460px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto}.quit-dialog::backdrop{background:#0a0618d9}.quit-dialog h2{color:#ffd95e;font-size:30px;line-height:1.15;margin:12px 0}.quit-dialog p{color:#d8c8f9;line-height:1.6}.quit-dialog .emoji{font-size:42px}.quit-dialog .btn{white-space:normal}
+/* BLUFFLE 5.2: controls stay reachable; public reveals belong to the whole room. */
+.top{position:sticky;top:0;z-index:60;display:grid;grid-template-columns:1fr auto;gap:12px;padding:12px 0;background:#170f35f2;backdrop-filter:blur(12px);border-radius:0 0 16px 16px}.top .pill{grid-column:1/-1;justify-self:start;font-size:10px;letter-spacing:1px}.settings-button{min-height:44px;padding:10px 13px;border-radius:12px;background:#58428d;border:1px solid #ffffff50;color:#fff;font-size:12px;font-weight:900}.hero-mask{display:block;width:92px;height:92px;border-radius:24px;margin:0 auto 22px}.hero{font-size:clamp(31px,7.5vw,46px)}.subtitle{line-height:1.6}.mode-picker{padding:0;border:0;margin:26px 0}.mode-picker legend{font-weight:850;color:#ffd95e;margin-bottom:12px}.mode-choice{display:flex;gap:13px;align-items:center;min-height:88px;border:2px solid #7962ac;background:#241848;border-radius:16px;padding:15px;margin:10px 0;cursor:pointer}.mode-choice:has(input:checked){border-color:#ffd95e;background:#463175}.mode-choice input{width:23px;height:23px;accent-color:#ffd95e;flex-shrink:0}.mode-choice strong{display:block;font-size:22px;color:#ffd95e}.mode-choice small{display:block;color:#d8c8f9;line-height:1.6;font-size:13px;margin-top:4px}.setup-ages{border:1px solid #ffffff24;border-radius:14px;padding:16px;margin:20px 0}.setup-ages summary{cursor:pointer;font-weight:800;color:#ffe18b;line-height:1.5}.setup-label{display:block;margin-top:22px;color:#d8c8f9;font-size:14px;font-weight:750}.question-change{font-size:14px}.settings-dialog{padding:26px;max-height:calc(100dvh - 36px)}.settings-dialog::backdrop{background:#0a0618ed}.settings-dialog .audio-settings{margin:18px 0}.settings-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0}.settings-links a{display:block;min-height:44px;padding:12px;border:1px solid #ffffff35;border-radius:12px;font-weight:800;font-size:14px;text-underline-offset:3px;line-height:1.5}.settings-links a:focus-visible{outline:3px solid #ffd95e;outline-offset:3px}.quit-dialog .btn{min-height:48px}.last-seconds{top:auto;bottom:max(16px,env(safe-area-inset-bottom));z-index:50}.reveal-stage{background:radial-gradient(circle at 50% 0,#62419c55,transparent 70%),#30205b}.reveal-stage .hero{margin-top:20px}.reveal-title{font-size:clamp(27px,6.5vw,37px);color:#ffd95e;line-height:1.15;letter-spacing:-1px;margin:20px 0}.reveal-answer{background:#ffe3a3;color:#2c1c48;border-radius:18px;padding:21px;margin:20px 0;overflow-wrap:anywhere}.reveal-answer .tag{color:#503568;font-size:10px}.reveal-answer p{margin:12px 0 0;font-size:clamp(22px,5.8vw,30px);font-weight:900;line-height:1.35}.truth-answer{background:#245f52;border:2px solid #6ee7ae;color:#fff}.truth-answer .tag{color:#bff7dd}.mystery-author{display:grid;place-items:center;min-height:120px;font-size:64px;color:#ffd95e;background:#241848;border:1px dashed #ffd95e66;border-radius:20px;margin:22px 0}.suspense{padding:20px 10px;text-align:center}.suspense #revealCount{font-size:110px;line-height:1.1;font-weight:1000;color:#ffd95e;text-shadow:4px 5px 0 #ed4e86;display:block;animation:revealBeat 1s ease-in-out infinite}.suspense #revealLive{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.suspense p{font-size:14px;color:#d8c8f9;line-height:1.6}.unmasked-panel{background:#241848;border:1px solid #ffffff30;border-radius:20px;padding:23px 19px;margin:20px 0}.unmasked-panel .bluff-author{font-size:clamp(28px,7vw,40px);color:#ffd95e;margin:10px 0 26px;overflow-wrap:anywhere}.unmasked-panel h3{font-size:11px;letter-spacing:1.5px;color:#ffb1d1;margin:18px 0 10px}.reveal-voters{gap:9px}.reveal-voters span{font-size:16px;padding:10px 13px}.point-explainer{font-size:14px;color:#d8c8f9;line-height:1.6}.reveal-points{font-size:43px;margin:25px 0 10px}.reveal-question{margin-top:25px;padding-top:18px;border-top:1px solid #ffffff30;color:#d8c8f9;font-size:14px}.reveal-question summary{cursor:pointer;color:#ffe18b;font-weight:750;padding:8px 0}.reveal-question p{line-height:1.6}.round-result{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:18px 0;border-bottom:1px solid #ffffff26}.round-result strong{overflow-wrap:anywhere}.round-result p{font-size:13px;line-height:1.5;color:#d8c8f9;margin:6px 0}.points-pill{border-radius:12px;background:#ffe3a3;color:#2c1c48;font-size:27px;font-weight:1000;padding:9px 12px;flex-shrink:0}.card p,.winner,.score span{overflow-wrap:anywhere}.reveal-meter{margin-bottom:22px}.reveal-meter span{height:8px}.game-actions{margin:0 0 16px}.footer{line-height:1.8}.settings-dialog h2{font-size:29px}.settings-dialog .subtitle{font-size:15px}
+.app:has(.reveal-stage) .top .pill{display:none}.reveal-stage .reveal-meter{margin:0 0 17px}.reveal-stage .reveal-title{margin:15px 0;font-size:clamp(26px,6.5vw,36px)}.reveal-stage .reveal-answer{padding:17px;margin:17px 0}.reveal-stage .reveal-answer p{font-size:clamp(21px,5.6vw,28px);margin-top:9px}.reveal-stage .unmasked-panel{padding:18px 17px;margin:16px 0}.reveal-stage .bluff-author{font-size:clamp(28px,6.8vw,38px);margin:9px 0 18px}.reveal-stage .reveal-points{font-size:36px;margin:17px 0 8px}.reveal-stage .point-explainer{font-size:13px;margin-bottom:2px}.reveal-stage .reveal-voters span{font-size:15px;padding:8px 12px}.reveal-stage .reveal-question{margin-top:20px;padding-top:12px}
+@keyframes revealBeat{0%,100%{transform:scale(.94)}45%{transform:scale(1)}}
+@media(max-width:380px){.app{padding:12px 12px 35px}.card{padding:21px 18px}.settings-dialog{padding:22px 18px}.settings-links{grid-template-columns:1fr}.top .brand{font-size:27px}.settings-button{font-size:11px;padding:9px 11px}}
+@media(prefers-reduced-motion:reduce){.suspense #revealCount,.reveal-pop{animation:none!important}*{scroll-behavior:auto!important}}
+
+/* Real, responsive reveal; the score ledger is separate from its animation. */
+.brand{display:flex;align-items:center;gap:8px}.brand .mask-inline{width:29px;height:29px}.mask-inline{display:inline-block;object-fit:contain;vertical-align:middle;width:23px;height:23px}.hero-mask{object-fit:contain;border-radius:0}.reveal-stage-v53 .reveal-meter{margin:17px 0 20px}.rx-question{background:#241848;color:#fff;border-radius:16px;padding:15px 17px;margin:0 0 19px;position:sticky;top:80px;z-index:5;box-shadow:0 5px 12px #170f3540}.rx-question .tag{display:block;font-size:10px;margin-bottom:7px}.rx-question p{margin:0;font-size:17px;line-height:1.45;font-weight:750}.rx-intro-mask{display:block;margin:24px auto 20px;object-fit:contain}.rx-title{font-size:clamp(25px,6.8vw,33px);line-height:1.12;letter-spacing:-.7px;margin:13px 0 19px;color:#fff}.rx-story{position:relative;perspective:900px;min-height:180px;margin:0 0 17px}.rx-flip{position:relative;display:grid;transform-style:preserve-3d;transition:transform .93s cubic-bezier(.2,.8,.2,1)}.rx-face{grid-area:1/1;min-height:180px;border-radius:18px;background:#ffe3a3;color:#2c1c48;padding:20px;display:flex;justify-content:center;flex-direction:column;backface-visibility:hidden;overflow-wrap:anywhere}.rx-face .tag{color:#6d416c;font-size:10px;margin-bottom:12px}.rx-face p{font-size:clamp(21px,5.6vw,27px);font-weight:900;line-height:1.3;margin:0}.rx-back{transform:rotateY(180deg);background:#ffd95e}.rx-back p{font-size:18px;line-height:1.4}.rx-owner{font-size:clamp(27px,7vw,37px);line-height:1.15;margin:0 0 12px;font-weight:1000}.rx-truth .rx-face{background:#244c45;color:#fff;border:1px solid #76e4ab80}.rx-truth .rx-face .tag{color:#b0f7d0}.rx-truth .rx-back{background:#76e4ab;color:#153d2b}.rx-truth .rx-back .tag{color:#153d2b}.rx-truth .rx-truth-text{font-size:clamp(21px,5.6vw,28px);line-height:1.35}.rx-audience{background:#241848;border-radius:16px;padding:17px;margin:0 0 16px;min-height:105px}.rx-audience h2{color:#e1d0fb;font-size:11px;letter-spacing:1.2px;margin:0 0 12px;line-height:1.45}.rx-voters{display:flex;gap:9px;flex-wrap:wrap}.rx-voter{display:inline-flex;align-items:center;gap:6px;background:#ff699a;color:#281544;border-radius:99px;padding:8px 13px;font-weight:900;font-size:14px;opacity:0;transform:translateY(20px) scale(.8);transition:opacity .36s,transform .57s cubic-bezier(.2,1.3,.3,1)}.rx-voter.arrived{opacity:1;transform:translateY(0) scale(1)}.rx-truth .rx-voter{background:#76e4ab;color:#153d2b}.rx-none{font-size:14px;line-height:1.6;color:#d8c8f9;margin:0;opacity:0;transition:opacity .4s}.rx-none.arrived{opacity:1}.rx-award{min-height:105px;opacity:0;transform:translateY(12px);transition:opacity .43s,transform .57s}.rx-award.arrived{opacity:1;transform:translateY(0)}.rx-award-title{font-size:13px;font-weight:850;color:#ffd95e;margin:0 0 11px}.rx-token{display:inline-grid;place-items:center;width:39px;height:39px;flex-shrink:0;vertical-align:middle}.rx-mask img{display:block;width:100%;height:100%;object-fit:contain}.rx-tick{border-radius:11px;background:#76e4ab;color:#153d2b;font-weight:1000;font-size:28px;line-height:1;box-shadow:0 4px 0 #2b865f}.rx-award-icons{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.rx-award-icons>.rx-token{opacity:0;transform:scale(.4);transition:opacity .29s,transform .64s cubic-bezier(.2,1.6,.3,1)}.rx-award-icons>.rx-token.arrived{opacity:1;transform:scale(1)}.rx-award-icons>strong{font-size:25px;color:#fff;margin-left:6px}.rx-truth-awards{display:flex;gap:13px 19px;flex-wrap:wrap}.rx-truth-awards>span{display:flex;align-items:center;gap:8px;font-size:14px}.rx-explanation{font-size:13px;color:#e3d4fb;line-height:1.65;margin:15px 0 0}.rx-zero{font-size:15px;color:#e1d0fb}.rx-status{min-height:43px;font-size:13px;line-height:1.6;color:#e3d4fb;margin:17px 0 13px}.rx-skip{font-size:13px;padding:12px}.rx-legend{display:flex;justify-content:center;gap:8px 14px;flex-wrap:wrap;margin-top:22px;color:#d8c8f9;font-size:11px}.rx-legend>span{display:flex;align-items:center;gap:5px}.rx-legend-token{width:18px;height:18px}.rx-legend-token.rx-tick{font-size:15px;border-radius:5px;box-shadow:none}.rx-board{position:relative}.rx-tray{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px 5px;margin:16px 0 22px}.rx-pending{display:flex;align-items:center;flex-direction:column;gap:6px;min-width:0}.rx-pending>.rx-token{width:32px;height:32px;font-size:22px;box-shadow:none;transition:opacity .29s,transform .29s}.rx-pending small{font-size:11px;color:#e1d0fb;text-align:center;line-height:1.25;overflow-wrap:anywhere;max-width:100%}.rx-pending.spent>.rx-token{opacity:.15;transform:scale(.8)}.rx-rows{position:relative}.rx-row{position:absolute;top:0;left:0;width:100%;height:70px;border-radius:13px;background:#30205b;border:1px solid #ffffff24;display:flex;align-items:center;gap:11px;padding:10px 12px;will-change:transform}.rx-rank{width:16px;flex-shrink:0;font-size:12px;color:#e1d0fb}.rx-player-name{flex:1;min-width:0;font-size:15px;font-weight:850;line-height:1.2}.rx-player-name>span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}.rx-row-earned{display:flex;align-items:center;gap:3px;margin-top:4px;min-height:17px}.rx-earned-token{width:17px;height:17px}.rx-earned-token.rx-tick{font-size:15px;border-radius:4px;box-shadow:none}.rx-total{font-size:28px;line-height:1.2;color:#ffd95e;font-weight:1000;flex-shrink:0;min-width:28px;text-align:right;font-variant-numeric:tabular-nums}.rx-row.rx-leader{background:#58428d;border-color:#ffd95e77}.rx-flight{position:absolute;top:0;left:0;z-index:4;pointer-events:none;width:32px;height:32px;font-size:22px;will-change:transform;display:none}.rx-flight.rx-tick{box-shadow:0 7px 18px #170f3555}.rx-board-result{min-height:45px;margin:12px 0 0;font-size:20px;line-height:1.4;font-weight:850;color:#ffd95e;opacity:0}
+@media(max-width:380px){.reveal-stage-v53{padding:20px 16px}.rx-question{padding:14px}.rx-question p{font-size:16px}.rx-face{padding:17px}.rx-tray{gap:10px 3px}.rx-row{padding:9px;gap:8px}.rx-title{font-size:27px}.brand .mask-inline{width:25px;height:25px}.top .brand{font-size:25px}}
+@media(prefers-reduced-motion:reduce){.rx-flip,.rx-voter,.rx-award,.rx-award-icons>.rx-token,.rx-none{transition:none!important;animation:none!important}}
+.rx-controls{position:sticky;bottom:max(8px,env(safe-area-inset-bottom));z-index:6;background:#30205bf5;border:1px solid #ffffff24;border-radius:17px;padding:8px;box-shadow:0 5px 20px #170f3555;margin:14px -6px 0}.rx-controls .btn{margin-top:0}.rx-controls .rx-skip{margin-top:8px}.reveal-stage-v53{isolation:isolate}
+@media(max-width:600px){.reveal-stage-v53 .rx-question{padding:12px 14px;margin-bottom:15px}.rx-question p{font-size:15px;line-height:1.4}.rx-title{font-size:25px;margin:10px 0 14px}.rx-story,.rx-face{min-height:145px}.rx-face{padding:17px}.rx-face p{font-size:21px}.rx-owner{font-size:28px;margin-bottom:9px}.rx-back p{font-size:16px}.rx-audience{min-height:85px;padding:13px;margin-bottom:13px}.rx-audience h2{margin-bottom:9px}.rx-voter{padding:7px 11px;font-size:13px}.rx-award{min-height:85px}.rx-status{margin-top:12px}.rx-question .tag{margin-bottom:6px}}
+
 </style></head><body><main id="app" class="app" aria-live="polite"></main>
 <script>
 'use strict';
@@ -25,166 +39,324 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const votingText=text=>String(text).toLocaleLowerCase('en-GB');
 const FREE_PACK_ID='free-pack-2026-10-28-v1';
 const legalLink=path=>(window.Capacitor?.isNativePlatform?.()?'https://www.bluffle.co.uk/':'')+path;
-let state={screen:'home',players:['Player 1','Player 2','Player 3','Player 4'],rounds:5,round:0,deck:[],answers:[],votes:[],turn:0,selected:-1,scores:[],error:'',stage:'answer',current:null,revealStep:0,mode:'auto',ages:[35,35,10,7],timerSeconds:0,littleHelp:'optional',hintOpen:false,deadline:null};
-function shuffle(a){let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
-function shell(content){app.innerHTML=`<header class="top"><div class="brand">BLUFFLE!</div><div class="pill">${state.screen==='home'||state.screen==='setup'?'🎉 FAMILY EDITION':`ROUND ${state.round+1} / ${state.rounds}`}</div></header>${state.screen!=='home'?`<div class="game-actions"><button type="button" class="exit-game" onclick="requestExitGame()">✕ EXIT GAME</button></div>`:''}${content}<footer class="footer">BLUFFLE! · Make it up. Make them believe it. · v5.1 beta · Free pack 1 · Music 2${state.screen==='home'?`<nav class="legal-links" aria-label="Help and legal information"><a href="${legalLink('privacy/')}">Privacy</a><a href="${legalLink('terms/')}">Terms</a><a href="${legalLink('support/')}">Support</a><a href="mailto:support@bluffle.co.uk">Email us</a></nav>`:''}</footer>`;saveSession()}
-
-function requestExitGame(){
- if(state.screen==='home'||document.getElementById('quitGameDialog'))return;
- const remaining=state.screen==='answer'&&state.deadline?Math.max(0,state.deadline-Date.now()):null;
- clearInterval(timerHandle);timerHandle=null;
- const dialog=document.createElement('dialog');
- dialog.id='quitGameDialog';dialog.className='quit-dialog';
- dialog.setAttribute('aria-labelledby','quitGameTitle');dialog.setAttribute('aria-describedby','quitGameDescription');
- dialog.innerHTML='<div class="emoji" aria-hidden="true">🎭</div><h2 id="quitGameTitle">Leave this game?</h2><p id="quitGameDescription">Your current game and scores will be cleared. You’ll return to the home screen.</p><button type="button" id="keepPlaying" class="btn" autofocus>KEEP PLAYING</button><button type="button" id="confirmExitGame" class="btn pink">EXIT TO HOME</button>';
- document.body.appendChild(dialog);
- dialog.querySelector('#keepPlaying').addEventListener('click',()=>dialog.close('stay'));
- dialog.querySelector('#confirmExitGame').addEventListener('click',()=>dialog.close('quit'));
- dialog.addEventListener('cancel',event=>{event.preventDefault();dialog.close('stay')});
- dialog.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();dialog.close('stay')}});
- dialog.addEventListener('close',()=>{
-  const quit=dialog.returnValue==='quit';dialog.remove();
-  if(quit){
-   clearInterval(timerHandle);timerHandle=null;
-   state={...state,screen:'home',round:0,deck:[],answers:[],votes:[],turn:0,selected:-1,scores:[],error:'',stage:'answer',current:null,revealStep:0,deadline:null,timerExpired:false,options:[],gains:[],hintOpen:false};
-   try{localStorage.removeItem(SAVE_KEY)}catch(e){}
-   render();
-  }else if(remaining!==null&&state.screen==='answer'){
-   state.deadline=Date.now()+remaining;tickTimer();
-  }
- },{once:true});
- dialog.showModal();
+const MASK_URL='assets/mask-point-v1.png?v=mask1';
+const SAVE_KEY='bluffle.session.v5.1.freepack1'; // Keep and migrate existing local games.
+const PRODUCT_ID='com.bluffle.premium_lifetime';
+const FREE_QUESTIONS=JUNIOR_BANK.length+FAMILY_BANK.length+BANK.length;
+const ENTITLEMENTS={premium:false};
+function freshState(){return {experienceVersion:53,screen:'home',players:['Player 1','Player 2','Player 3','Player 4'],ages:[35,35,10,7],rounds:5,round:0,deck:[],answers:[],votes:[],turn:0,selected:-1,scores:[],error:'',stage:'answer',current:null,mode:'kids',timerSeconds:0,hintOpen:false,deadline:null,timerExpired:false,revealStep:0,revealPhase:'ready',revealCountdown:3,revealElapsed:0,roundBaseScores:[],seenQuestionIds:[],hasScored:false}}
+let state=freshState(),timerHandle=null,revealHandle=null,revealDueAt=null,revealToken=0;
+const pauseReasons=new Set();let pausedClocks=null;
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function shell(content){
+ app.innerHTML=`<header class="top"><div class="brand"><img class="mask-inline" src="${MASK_URL}" alt="" width="29" height="29">BLUFFLE!</div><button type="button" class="settings-button" onclick="showSettings()" aria-haspopup="dialog" aria-label="Open settings">⚙ SETTINGS</button><div class="pill">${['home','setup'].includes(state.screen)?'A LITTLE BLUFF. A LOT OF NERVE.':`ROUND ${state.round+1} / ${state.rounds}`}</div></header>${state.screen!=='home'?'<div class="game-actions"><button type="button" class="exit-game" onclick="requestExitGame()">✕ EXIT GAME</button></div>':''}${content}<footer class="footer">BLUFFLE! · Make it up. Make them believe it.<br>v5.3 beta · Kids & Classic · The Big Reveal</footer>`;
+ saveSession();
 }
-
-function home(){shell(`<section class="card"><div class="emoji">🎭</div><h1 class="hero">Can you <span class="accent">pull it off?</span></h1><p class="subtitle">Make up a convincing answer. Fool your family. Spot the truth. Every player you fool earns you a point!</p><button class="btn" onclick="setup()">LET'S PLAY →</button><p class="help">Pass one phone or tablet around. Each player writes a secret bluff, then everyone votes privately. Your 150-question free starter pack is included for offline play.</p></section>`)}
-function setup(){state.screen='setup';render()}
+function sceneKey(){return [state.screen,state.stage,state.round,state.turn,state.current?.[5],state.revealStep].join('|')}
+function clearActiveGame(clearPlayers=false){
+ clearInterval(timerHandle);timerHandle=null;clearRevealTimer();pauseReasons.clear();pausedClocks=null;
+ const {players,ages,mode,timerSeconds,rounds}=state;
+ state=clearPlayers?freshState():{...freshState(),players,ages,mode,timerSeconds,rounds};
+ try{localStorage.removeItem(SAVE_KEY)}catch(e){}
+ restoreMusicLevel();render();
+}
+function openGameDialog(id,title,body,reason,onAction){
+ if(document.querySelector('dialog[open]'))return;
+ pauseGame(reason);
+ const dialog=document.createElement('dialog');dialog.id=id;dialog.className='quit-dialog settings-dialog';dialog.setAttribute('aria-labelledby',id+'Title');
+ dialog.innerHTML=`<h2 id="${id}Title">${title}</h2>${body}`;
+ document.body.appendChild(dialog);
+ dialog.addEventListener('click',event=>{const action=event.target.closest('[data-dialog-action]')?.dataset.dialogAction;if(action)dialog.close(action)});
+ dialog.addEventListener('cancel',event=>{event.preventDefault();dialog.close('cancel')});
+ dialog.addEventListener('close',()=>{const action=dialog.returnValue;dialog.remove();onAction?.(action);resumeGame(reason)},{once:true});
+ dialog.showModal();return dialog;
+}
+function requestExitGame(){
+ if(state.screen==='home')return;
+ openGameDialog('quitGameDialog','Leaving the scene of the bluff?',`<p>Your current game and scores will be cleared. Your sound preferences stay put.</p><button type="button" id="keepPlaying" class="btn" data-dialog-action="cancel" autofocus>KEEP PLAYING</button><button type="button" id="confirmExitGame" class="btn pink" data-dialog-action="quit">EXIT TO HOME</button>`,'exit',action=>{if(action==='quit')clearActiveGame()});
+}
+function showSettings(){
+ const playing=!['home','setup'].includes(state.screen);
+ const dialog=openGameDialog('settingsDialog','Behind the bluff',`<p class="subtitle">Turn the music down to zero. Keep the confidence wildly overestimated.</p>${audioSettingsHtml()}<p class="help">${playing?'The game is paused while these settings are open. Your typed answer and votes stay where you left them.':'Sound choices are remembered on this device.'}</p><nav class="settings-links" aria-label="Help and legal information"><a href="${legalLink('privacy/')}" target="_blank" rel="noopener">Privacy Policy ↗</a><a href="${legalLink('terms/')}" target="_blank" rel="noopener">Terms of Use ↗</a><a href="${legalLink('support/')}" target="_blank" rel="noopener">Support ↗</a><a href="mailto:support@bluffle.co.uk">Email support</a></nav><p class="help">Play stays on this device. No accounts, tracking or ads are active. ${FREE_QUESTIONS} free questions. Premium is a preview; purchases are not available.</p><button type="button" class="btn" data-dialog-action="cancel" autofocus>BACK TO THE BLUFF</button><button type="button" class="btn secondary" onclick="requestSettingsReset()">ERASE SAVED GAME…</button>`,'settings',action=>{if(action==='reset')clearActiveGame(true)});
+ return dialog;
+}
+function showAbout(){return showSettings()}
+function requestSettingsReset(){
+ const settings=$('settingsDialog');if(!settings)return;
+ // Keep the native settings dialog and timers paused during confirmation.
+ if(confirm('Erase the current game, player details and scores? Your sound preferences will be kept.'))settings.close('reset');
+}
+function resetSession(){if(confirm('Erase the current game, player details and scores?'))clearActiveGame(true)}
+function home(){shell(`<section class="card"><img class="hero-mask" src="${MASK_URL}" width="92" height="92" alt="Winking BLUFFLE mask"><span class="tag">TALL TALES. STRAIGHT FACES.</span><h1 class="hero">Utter nonsense.<br><span class="accent">Beautifully delivered.</span></h1><p class="subtitle">Invent a convincing answer. Sell it with a straight face. Then find out who bought it.</p><button class="btn" onclick="setup()">ASSEMBLE THE BLUFFERS →</button><p class="help">3–10 players. One shared screen. +1 for spotting the truth; +1 for every player who falls for your bluff. Confidence entirely optional.</p><button class="btn secondary" onclick="showPremium()">👑 PREMIUM — £3.99 PREVIEW</button></section>`)}
+function setup(){state.screen='setup';state.error='';render()}
 function addPlayer(){if(state.players.length>=10)return;state.players.push(`Player ${state.players.length+1}`);state.ages.push(10);render()}
 function removePlayer(i){if(state.players.length<=3)return;state.players.splice(i,1);state.ages.splice(i,1);render()}
 function updatePlayer(i,v){state.players[i]=v}
 function updateAge(i,v){state.ages[i]=Number(v)}
-function poolForMode(){const youngest=Math.min(...state.ages);const m=state.mode==='auto'?(youngest<10?'junior':youngest<14?'family':'classic'):state.mode;return m==='junior'?JUNIOR_BANK:m==='family'?[...JUNIOR_BANK,...FAMILY_BANK]:[...JUNIOR_BANK,...FAMILY_BANK,...BANK]}
-
-function categoryGroup(category){
- const key=String(category).toLowerCase();
- if(['animals','animal oddities'].includes(key))return 'animals';
- if(['odd words','weird words'].includes(key))return 'words';
- if(['geography','weird geography','strange places'].includes(key))return 'places';
- if(['films','film lines'].includes(key))return 'films';
- if(['books','autobiographies','first words of books','book endings'].includes(key))return 'books';
- if(['science','space'].includes(key))return 'science';
- return key;
-}
-function makeDeck(pool,count){
- const groups=new Map();
- for(const question of shuffle(pool)){
-  const key=categoryGroup(question[0]);
-  if(!groups.has(key))groups.set(key,[]);
-  groups.get(key).push(question);
- }
- const deck=[];
- while(deck.length<count&&groups.size){
-  for(const key of shuffle([...groups.keys()])){
-   if(deck.length>=count)break;
-   const group=groups.get(key);deck.push(group.pop());
-   if(!group.length)groups.delete(key);
-  }
- }
- return deck;
-}
-
 function setGameSetting(k,v){state[k]=v;saveSession()}
-function isLittleBluffer(){return Number(state.ages[state.turn])<10}
-function startAnswer(){state.screen='answer';state.hintOpen=false;state.timerExpired=false;state.deadline=state.timerSeconds?Date.now()+state.timerSeconds*1000:null;render();tickTimer()}
-let timerHandle=null;
-function updateCountdown(left){
- const timer=$('answerTimer'),clock=$('timeLeft'),cue=$('lastSeconds'),number=$('lastSecondsNumber');
- if(clock&&clock.textContent!==left+'s')clock.textContent=left+'s';
- if(timer)timer.classList.toggle('urgent',left>0&&left<=10);
- if(cue){cue.hidden=!(left>0&&left<=10);if(number&&number.textContent!==String(left))number.textContent=String(left);}
+function poolForMode(){return state.mode==='kids'?JUNIOR_BANK:[...JUNIOR_BANK,...FAMILY_BANK,...BANK]}
+function categoryGroup(category){const key=String(category).toLowerCase();if(['animals','animal oddities'].includes(key))return 'animals';if(['odd words','weird words'].includes(key))return 'words';if(['geography','weird geography','strange places'].includes(key))return 'places';if(['films','film lines'].includes(key))return 'films';if(['books','autobiographies','first words of books','book endings'].includes(key))return 'books';if(['science','space'].includes(key))return 'science';return key}
+function makeDeck(pool,count){const groups=new Map();for(const q of shuffle(pool)){const key=categoryGroup(q[0]);if(!groups.has(key))groups.set(key,[]);groups.get(key).push(q)}const deck=[];while(deck.length<count&&groups.size){for(const key of shuffle([...groups.keys()])){if(deck.length>=count)break;const group=groups.get(key);deck.push(group.pop());if(!group.length)groups.delete(key)}}return deck}
+function start(){
+ const names=state.players.map(x=>x.trim());
+ if(names.some(x=>!x)||new Set(names.map(x=>x.toLowerCase())).size!==names.length){state.error='Every bluffer needs a different name. Aliases welcome; duplicates less so.';render();return}
+ state.players=names;state.scores=names.map(()=>0);state.round=0;state.deck=makeDeck(poolForMode(),state.rounds);state.seenQuestionIds=[];nextRound();
 }
+function nextRound(){
+ clearInterval(timerHandle);timerHandle=null;clearRevealTimer();
+ state.current=state.deck[state.round];if(!state.current){state.screen='final';render();return}
+ state.seenQuestionIds=[...new Set([...(state.seenQuestionIds||[]),state.current[5]])];
+ resetRound();state.screen='question';restoreMusicLevel();render();
+}
+function resetRound(){state.answers=Array(state.players.length).fill('');state.votes=Array(state.players.length).fill(-1);state.options=[];state.gains=state.players.map(()=>0);state.hasScored=false;state.roundBaseScores=[...state.scores];state.revealElapsed=0;state.turn=0;state.selected=-1;state.stage='answer';state.error='';state.deadline=null;state.timerExpired=false;state.hintOpen=false;state.revealStep=0;state.revealPhase='ready';state.revealCountdown=3}
+function beginBluffing(){if(state.screen!=='question')return;state.screen='handoff';render()}
+function replacementQuestions(){const used=new Set([...(state.seenQuestionIds||[]),...state.deck.map(q=>q[5])]);return poolForMode().filter(q=>!used.has(q[5]))}
+function canChangeQuestion(){return ['question','handoff','answer','voteIntro'].includes(state.screen)&&state.stage!=='vote'&&state.votes.every(v=>v<0)}
+function questionChangeButton(){if(!canChangeQuestion())return '';const available=replacementQuestions().length>0;return `<button type="button" class="btn secondary question-change" onclick="requestQuestionChange()" ${available?'':'disabled'}>↻ ${available?'CHANGE QUESTION':'NO UNUSED QUESTIONS LEFT'}</button><p class="help" id="questionSwapStatus">${available?'Not feeling this one? Swap it before voting starts.':'You’ve tried every spare question in this mode. This one will have to face the music.'}</p>`}
+function requestQuestionChange(){
+ if(!canChangeQuestion()||!replacementQuestions().length)return;
+ const hasWork=state.answers.some(Boolean)||Boolean($('answer')?.value.trim());
+ if(!hasWork){changeQuestion();return}
+ openGameDialog('questionChangeDialog','Give this question the slip?',`<p>Everyone’s bluffs for this round will be discarded. Scores from earlier rounds stay safe. You’ll all start again with a new question.</p><button type="button" class="btn" data-dialog-action="cancel" autofocus>KEEP THIS QUESTION</button><button type="button" class="btn pink" data-dialog-action="change">CHANGE QUESTION & START ROUND AGAIN</button>`,'question-change',action=>{if(action==='change')changeQuestion()});
+}
+function changeQuestion(){
+ if(!canChangeQuestion())return false;
+ const available=replacementQuestions();if(!available.length)return false;
+ const different=available.filter(q=>categoryGroup(q[0])!==categoryGroup(state.current[0]));
+ const next=makeDeck(different.length?different:available,1)[0];
+ clearInterval(timerHandle);timerHandle=null;clearRevealTimer();state.current=next;state.deck[state.round]=next;state.seenQuestionIds=[...new Set([...(state.seenQuestionIds||[]),next[5]])];resetRound();state.screen='question';render();return true;
+}
+function isLittleBluffer(){return Number(state.ages[state.turn])<10}
+function startAnswer(){if(state.screen!=='handoff'||state.stage!=='answer')return;state.screen='answer';state.hintOpen=false;state.timerExpired=false;state.deadline=state.timerSeconds?Date.now()+state.timerSeconds*1000:null;render();tickTimer();$('answer')?.focus()}
+function updateCountdown(left){const timer=$('answerTimer'),clock=$('timeLeft'),cue=$('lastSeconds'),number=$('lastSecondsNumber');if(clock)clock.textContent=left+'s';if(timer)timer.classList.toggle('urgent',left>0&&left<=10);if(cue){cue.hidden=!(left>0&&left<=10);if(number)number.textContent=String(left)}}
 function tickTimer(){
  clearInterval(timerHandle);timerHandle=null;
- if(state.screen!=='answer'||!state.deadline){updateCountdown(0);return;}
- const update=()=>{
-  if(state.screen!=='answer'||!state.deadline){clearInterval(timerHandle);timerHandle=null;updateCountdown(0);return;}
-  const left=Math.max(0,Math.ceil((state.deadline-Date.now())/1000));
-  updateCountdown(left);
-  if(left===0){
-   clearInterval(timerHandle);timerHandle=null;state.deadline=null;state.timerExpired=true;
-   const field=$('answer');
-   if(field&&field.value.trim().length>=2)answerSubmit();
-   if(state.screen==='answer'){
-    const err=$('err'),skip=$('skipAnswer'),clock=$('timeLeft');
-    if(clock)clock.textContent="Time's up!";
-    if(err)err.textContent=err.textContent?"Time is up! "+err.textContent:'Time is up! Submit a bluff or choose Skip.';
-    if(skip)skip.hidden=false;
-    saveSession();
-   }
-  }
+ if(pauseReasons.size)return;
+ if(state.screen!=='answer'||!state.deadline){updateCountdown(0);return}
+ const update=()=>{if(state.screen!=='answer'||!state.deadline){clearInterval(timerHandle);timerHandle=null;updateCountdown(0);return}const left=Math.max(0,Math.ceil((state.deadline-Date.now())/1000));updateCountdown(left);if(left===0){clearInterval(timerHandle);timerHandle=null;state.deadline=null;state.timerExpired=true;const field=$('answer');if(field&&field.value.trim().length>=2)answerSubmit();if(state.screen==='answer'){const err=$('err'),skip=$('skipAnswer'),clock=$('timeLeft');if(clock)clock.textContent="Time's up!";if(err)err.textContent=err.textContent?'Time is up! '+err.textContent:'Time is up! Land your bluff or choose Skip.';if(skip)skip.hidden=false;saveSession()}}};
+ update();if(state.screen==='answer'&&state.deadline)timerHandle=setInterval(update,250);
+}
+function skipAnswer(){const field=$('answer');if(!field)return;let bluff='An entirely respectable mystery '+(state.turn+1);while(state.answers.some(a=>a.toLowerCase()===bluff.toLowerCase()))bluff+='!';field.value=bluff;answerSubmit()}
+function toggleHint(){if(!isLittleBluffer())return;const value=$('answer')?.value||'';state.hintOpen=!state.hintOpen;render();if($('answer'))$('answer').value=value;tickTimer()}
+function answerSubmit(){
+ if(state.screen!=='answer'||pauseReasons.size)return;
+ const val=$('answer').value.trim();if(val.length<2){$('err').textContent='A little more bluff, please. At least two characters.';return}if(val.length>110){$('err').textContent='Keep your tall tale under 110 characters.';return}
+ if(val.toLowerCase().replace(/[^a-z0-9]/g,'')===state.current[2].toLowerCase().replace(/[^a-z0-9]/g,'')){$('err').textContent='That is the actual answer! We need your finest fiction.';return}
+ if(state.answers.some(a=>a.toLowerCase()===val.toLowerCase())){$('err').textContent='Someone has already submitted that answer. Great minds… try another.';return}
+ clearInterval(timerHandle);timerHandle=null;state.deadline=null;state.answers[state.turn]=val;state.turn++;
+ if(state.turn>=state.players.length){state.screen='voteIntro';state.options=shuffle([...state.answers.map((text,owner)=>({text,owner})),{text:state.current[2],owner:-1}]);state.turn=0}else state.screen='handoff';render();
+}
+function startVoting(){if(state.screen!=='voteIntro')return;state.stage='vote';state.screen='handoff';state.turn=0;render()}
+function startVote(){if(state.screen!=='handoff'||state.stage!=='vote')return;state.screen='vote';render()}
+function voteSubmit(){
+ if(state.screen!=='vote'||pauseReasons.size||!Number.isInteger(state.selected)||state.selected<0||!state.options[state.selected])return;
+ const option=state.options[state.selected];if(option.owner===state.turn){state.error='Admire your own work. Vote for somebody else’s.';render();return}
+ state.votes[state.turn]=state.selected;state.turn++;state.selected=-1;state.error='';
+ if(state.turn>=state.players.length){calculate();state.screen='reveal';state.revealStep=0;state.revealPhase='ready';state.revealElapsed=0}else state.screen='handoff';render();
+}
+function calculate(){if(state.hasScored)return;state.roundBaseScores=[...state.scores];state.gains=state.players.map(()=>0);state.votes.forEach((v,i)=>{const owner=state.options[v].owner;if(owner===-1)state.gains[i]++;else state.gains[owner]++});state.gains.forEach((g,i)=>state.scores[i]+=g);state.hasScored=true}
+function votersFor(index){return state.votes.flatMap((v,i)=>v===index?[state.players[i]]:[])}
+function revealBluffs(){return state.options.map((o,index)=>({...o,index})).filter(o=>o.owner!==-1).sort((a,b)=>votersFor(a.index).length-votersFor(b.index).length||a.index-b.index)}
+function audienceChips(names,empty){return `<div class="reveal-voters">${names.length?names.map(n=>`<span>${esc(n)}</span>`).join(''):`<p class="muted">${empty}</p>`}</div>`}
+// Approved reveal: voters first, author second, masks last; truth after all bluffs.
+const REVEAL_PACE=.7;
+function maskToken(extra='',label='One bluff point'){return `<span class="rx-token rx-mask ${extra}" role="img" aria-label="${esc(label)}"><img src="${MASK_URL}" alt="" width="36" height="36"></span>`}
+function truthToken(extra='',label='One truth point'){return `<span class="rx-token rx-tick ${extra}" role="img" aria-label="${esc(label)}">✓</span>`}
+function competitionRank(score,scores){return 1+scores.filter(n=>n>score).length}
+function scoreOrder(scores){return scores.map((_,i)=>i).sort((a,b)=>scores[b]-scores[a]||a-b)}
+function roundAwards(){
+ return [...revealBluffs().flatMap(o=>state.votes.flatMap(v=>v===o.index?[{owner:o.owner,type:'mask'}]:[])),...state.votes.flatMap((v,i)=>state.options[v]?.owner===-1?[{owner:i,type:'tick'}]:[])];
+}
+function roundBase(){return state.roundBaseScores?.length===state.players.length?state.roundBaseScores:state.scores.map((n,i)=>n-(state.gains[i]||0))}
+function revealTimings(kind,count){
+ const authorAt=kind==='truth'?450:Math.max(1950,700+(count-1)*330+700);
+ const votersAt=kind==='truth'?1050:700;
+ const awardAt=kind==='truth'?Math.max(1950,1050+(count-1)*250+500):authorAt+850;
+ const duration=kind==='truth'?Math.max(4200,awardAt+1000):Math.max(count?3900:3450,awardAt+Math.max(0,count-1)*200+650);
+ return {authorAt,votersAt,awardAt,duration};
+}
+function revealScene(){
+ const bluffs=revealBluffs(),step=state.revealStep;
+ if(step<1)return {kind:'intro',duration:0};
+ if(step<=bluffs.length){const bluff=bluffs[step-1],voters=votersFor(bluff.index);return {kind:'bluff',bluff,voters,...revealTimings('bluff',voters.length)}}
+ if(step===bluffs.length+1){const voters=state.votes.flatMap((v,i)=>state.options[v].owner===-1?[state.players[i]]:[]);return {kind:'truth',voters,...revealTimings('truth',voters.length)}};
+ const awards=roundAwards(),gatherEnd=550+awards.length*620+900;
+ return {kind:'board',awards,duration:gatherEnd+1700,gatherEnd};
+}
+let revealLastTime=null,revealSceneKey='',revealGeometry=null;
+function clearRevealTimer(){cancelAnimationFrame(revealHandle);revealHandle=null;revealDueAt=null;revealLastTime=null;revealToken++}
+function pauseGame(reason){
+ if(pauseReasons.has(reason))return;
+ if(!pauseReasons.size){pausedClocks={scene:sceneKey(),answer:state.screen==='answer'&&state.deadline?Math.max(0,state.deadline-Date.now()):null,reveal:state.screen==='reveal'&&state.revealPhase==='running'};clearInterval(timerHandle);timerHandle=null;clearRevealTimer()}
+ pauseReasons.add(reason);if(state.screen==='reveal'){restoreMusicLevel();saveSession()}
+}
+function resumeGame(reason){
+ pauseReasons.delete(reason);if(pauseReasons.size)return;
+ const paused=pausedClocks;pausedClocks=null;if(!paused||paused.scene!==sceneKey())return;
+ if(paused.answer!==null&&state.screen==='answer'){state.deadline=Date.now()+paused.answer;tickTimer()}
+ if(paused.reveal&&state.screen==='reveal'&&state.revealPhase==='running'){restoreMusicLevel();runRevealAnimation()}
+}
+function currentMusicVolume(){return MUSIC_VOLUME*(state.screen==='reveal'&&state.revealPhase==='running'&&!pauseReasons.size ? .4 : 1)}
+function restoreMusicLevel(){if(typeof musicGain!=='undefined'&&musicGain&&audioCtx?.state==='running'){const now=audioCtx.currentTime;musicGain.gain.cancelScheduledValues(now);musicGain.gain.setValueAtTime(musicGain.gain.value,now);musicGain.gain.linearRampToValueAtTime(currentMusicVolume(),now+.16)}}
+function startUnmasking(){if(state.screen!=='reveal'||state.revealStep!==0||pauseReasons.size)return;state.revealStep=1;beginRevealClip()}
+function beginRevealClip(){clearRevealTimer();state.revealElapsed=0;state.revealPhase='running';render();focusReveal();restoreMusicLevel();runRevealAnimation()}
+function runRevealAnimation(){
+ clearRevealTimer();if(state.screen!=='reveal'||state.revealPhase!=='running'||pauseReasons.size)return;
+ const token=revealToken,scene=revealScene();revealLastTime=null;let lastSave=-1000;
+ const step=now=>{
+  if(token!==revealToken||state.screen!=='reveal'||state.revealPhase!=='running'||pauseReasons.size)return;
+  const previous=state.revealElapsed;
+  if(revealLastTime!==null)state.revealElapsed=Math.min(scene.duration,previous+Math.max(0,now-revealLastTime)*REVEAL_PACE);
+  revealLastTime=now;updateRevealFrame();playRevealCues(scene,previous,state.revealElapsed);
+  if(state.revealElapsed>=scene.duration){completeRevealClip();return}
+  if(now-lastSave>=1000){lastSave=now;saveSession()}
+  revealHandle=requestAnimationFrame(step);
  };
- update();
- if(state.screen==='answer'&&state.deadline)timerHandle=setInterval(update,250);
+ revealHandle=requestAnimationFrame(step);
 }
-function skipAnswer(){const field=$('answer');if(!field)return;field.value='A mystery surprise '+(state.turn+1);answerSubmit()}
-function toggleHint(){if(!isLittleBluffer())return;const field=$('answer');const value=field?field.value:'';state.hintOpen=!state.hintOpen;render();if($('answer'))$('answer').value=value;tickTimer()}
-function start(){let names=state.players.map(x=>x.trim());if(names.some(x=>!x)||new Set(names.map(x=>x.toLowerCase())).size!==names.length){state.error='Please give every player a unique name.';render();return}state.players=names;state.scores=names.map(()=>0);state.round=0;state.deck=makeDeck(poolForMode(),state.rounds);nextRound()}
-function nextRound(){state.current=state.deck[state.round];state.answers=Array(state.players.length).fill('');state.votes=Array(state.players.length).fill(-1);state.turn=0;state.stage='answer';state.screen='handoff';state.error='';state.deadline=null;render()}
-function answerSubmit(){const val=$('answer').value.trim();if(val.length<2){$('err').textContent='Please enter an answer.';return}if(val.length>110){$('err').textContent='Keep your answer under 110 characters.';return}if(val.toLowerCase().replace(/[^a-z0-9]/g,'')===state.current[2].toLowerCase().replace(/[^a-z0-9]/g,'')){$('err').textContent='That is the actual answer! Invent a different bluff.';return}if(state.answers.some(a=>a.toLowerCase()===val.toLowerCase())){$('err').textContent='Someone has already submitted that answer. Try another.';return}clearInterval(timerHandle);state.deadline=null;state.answers[state.turn]=val;state.turn++;if(state.turn>=state.players.length){state.screen='voteIntro';state.options=shuffle([...state.answers.map((text,owner)=>({text,owner})),{text:state.current[2],owner:-1}]);state.turn=0;state.stage='vote'}else state.screen='handoff';render()}
-function voteSubmit(){if(state.selected<0)return;const o=state.options[state.selected];if(o.owner===state.turn){state.error='You cannot vote for your own answer.';render();return}state.votes[state.turn]=state.selected;state.turn++;state.selected=-1;state.error='';if(state.turn>=state.players.length){calculate();state.screen='reveal';state.revealStep=0}else state.screen='handoff';render()}
-function calculate(){state.gains=state.players.map(()=>0);state.votes.forEach((v,i)=>{const owner=state.options[v].owner;if(owner===-1)state.gains[i]++;else state.gains[owner]++});state.gains.forEach((g,i)=>state.scores[i]+=g)}
-function advance(){state.round++;if(state.round>=state.rounds)state.screen='final';else{nextRound();return}render()}
-function render(){const s=state;switch(s.screen){
-case 'home':home();break;
-case 'setup':shell(`<section class="card"><span class="tag">GAME SETUP</span><h1 class="hero">Who's <span class="accent">bluffing?</span></h1><p class="muted">3–10 players. Add everyone's name.</p>${s.players.map((p,i)=>`<div class="row player"><span>🎭</span><input aria-label="Player ${i+1} name" class="input" maxlength="24" value="${esc(p)}" oninput="updatePlayer(${i},this.value)"><button class="btn secondary small" aria-label="Remove player ${i+1}" onclick="removePlayer(${i})" ${s.players.length<=3?'disabled':''}>✕</button></div>`).join('')}<button class="btn secondary" onclick="addPlayer()" ${s.players.length>=10?'disabled':''}>+ ADD PLAYER</button><p class="muted">Player ages (used for automatic difficulty)</p><div class="age-grid">${s.players.map((p,i)=>`<label class="age-item">${esc(p)}<select class="input" onchange="updateAge(${i},this.value)">${[7,8,9,10,11,12,13,14,16,18,25,35,45,60].map(n=>`<option value="${n}" ${Number(s.ages[i]||10)===n?'selected':''}>${n}${n===60?'+':''}</option>`).join('')}</select></label>`).join('')}</div><p class="muted">Question mode</p><select class="input" onchange="setGameSetting('mode',this.value)">${[['auto','Automatic (youngest player)'],['junior','Junior (7+)'],['family','Family (10+)'],['classic','Classic (14+)']].map(([v,l])=>`<option value="${v}" ${s.mode===v?'selected':''}>${l}</option>`).join('')}</select><p class="muted">Answer time limit</p><select class="input" onchange="setGameSetting('timerSeconds',Number(this.value))">${[[0,'Off (default)'],[30,'30 seconds'],[60,'60 seconds'],[90,'90 seconds'],[120,'2 minutes']].map(([v,l])=>`<option value="${v}" ${s.timerSeconds===v?'selected':''}>${l}</option>`).join('')}</select><p class="muted">💡 Little Bluffer Help is automatically available to players under 10. They can choose whether to open it during their answer turn.</p>${audioSettingsHtml()}<p class="muted">Number of rounds</p><select class="input" onchange="state.rounds=Number(this.value)">${[5,10,15].map(n=>`<option value="${n}" ${n===s.rounds?'selected':''}>${n} rounds</option>`).join('')}</select><div class="error">${esc(s.error)}</div><button class="btn" onclick="start()">START GAME →</button></section>`);break;
-case 'handoff':shell(`<section class="card"><span class="tag">${s.stage==='answer'?'SECRET ANSWER':'SECRET VOTE'}</span><div class="emoji">📱</div><h1 class="hero">Pass to <span class="accent">${esc(s.players[s.turn])}</span></h1><p class="subtitle">${s.stage==='answer'?'Only '+esc(s.players[s.turn])+' should see the next screen. Think of a convincing fake answer.':'Only '+esc(s.players[s.turn])+' should see the voting screen. No peeking!'}</p><div class="progress">${s.players.map((_,i)=>`<span class="${i<s.turn?'done':''}"></span>`).join('')}</div><button class="btn" onclick="${s.stage==='answer'?'startAnswer()':"state.screen='vote';render()"}">I'M ${esc(s.players[s.turn]).toUpperCase()} — READY →</button></section>`);break;
-case 'answer':shell(`<section class="card"><span class="tag">${esc(s.current[0])} · PLAYER ${s.turn+1}/${s.players.length}</span><div class="question">${esc(s.current[1])}</div><p class="subtitle">${esc(s.players[s.turn])}, make up something that sounds real!</p>${s.timerSeconds&&(s.deadline||s.timerExpired)?`<div id="answerTimer" class="pill answer-timer">⏱️ <span>Time remaining:</span> <span id="timeLeft">${s.deadline?Math.max(0,Math.ceil((s.deadline-Date.now())/1000))+'s':"Time's up!"}</span></div>`:''}<div id="lastSeconds" class="last-seconds" hidden aria-hidden="true"><small>Seconds left</small><strong id="lastSecondsNumber"></strong></div>${isLittleBluffer()?`<button type="button" class="btn secondary" onclick="toggleHint()">💡 ${s.hintOpen?'HIDE HELP':'LITTLE BLUFFER HELP'}</button>${s.hintOpen?`<div class="hintbox"><strong>What does this mean?</strong><p>${esc(s.current[4]||'Think of an answer that sounds believable, even if you do not know the real one.')}</p><small>Make up your own answer — the real answer stays secret!</small></div>`:''}`:''}<form onsubmit="event.preventDefault();answerSubmit()"><input id="answer" class="input" autocomplete="off" autocapitalize="sentences" maxlength="110" placeholder="Your brilliant fake answer..." aria-label="Your fake answer"><div id="err" class="error"></div><button type="submit" class="btn">LOCK IN MY BLUFF 🔒</button><button type="button" id="skipAnswer" class="btn secondary" ${s.timerExpired?'':'hidden'} onclick="skipAnswer()">SKIP THIS ANSWER</button></form><p class="help">Your answer will be hidden as soon as you submit it.</p></section>`);break;
-case 'voteIntro':shell(`<section class="card"><div class="emoji">🗳️</div><h1 class="hero">The bluffs <span class="accent">are in!</span></h1><p class="subtitle">${s.players.length} fake answers and 1 real answer have been shuffled together. Pass the device around again. Each player secretly votes for the answer they think is true.</p><p class="voteinfo">👀 You cannot vote for your own answer. The app keeps the votes secret until everyone has voted.</p><button class="btn" onclick="state.screen='handoff';render()">START VOTING →</button></section>`);break;
-case 'vote':shell(`<section class="card"><span class="tag">${esc(s.current[0])} · VOTER ${s.turn+1}/${s.players.length}</span><div class="question">${esc(s.current[1])}</div><p class="muted">${esc(s.players[s.turn])}, which answer is the real one?</p>${s.options.map((o,i)=>`<button class="option ${s.selected===i?'selected':''}" onclick="state.selected=${i};state.error='';render()" ${o.owner===s.turn?'disabled':''}><span class="letter">${String.fromCharCode(65+i)}</span><span>${esc(votingText(o.text))}${o.owner===s.turn?' <small>(your answer)</small>':''}</span></button>`).join('')}<div class="error">${esc(s.error)}</div><button class="btn" onclick="voteSubmit()" ${s.selected<0?'disabled':''}>LOCK IN MY VOTE 🔒</button></section>`);break;
-case 'reveal':{
- const fakes=s.options.map((o,i)=>({...o,optionIndex:i})).filter(o=>o.owner!==-1);
- const step=s.revealStep||0;
- const total=fakes.length+2;
- let panel='';
- if(step===0){panel=`<div class="emoji reveal-pop">🥁</div><h1 class="hero reveal-pop">The truth is <span class="accent">coming...</span></h1><p class="subtitle">Everyone has voted. Ready to find out who fooled the family?</p><button class="btn" onclick="state.revealStep++;render()">REVEAL THE TRUTH ✨</button>`}
- else if(step===1){panel=`<div class="emoji reveal-pop">🎯</div><span class="tag">THE REAL ANSWER</span><div class="reveal correct reveal-pop reveal-glow"><h2>${esc(s.current[2])}</h2><p>${esc(s.current[3])}</p></div><p class="muted">${s.votes.filter(v=>s.options[v].owner===-1).length} player(s) guessed correctly and earned a point.</p><button class="btn" onclick="state.revealStep++;render()">UNMASK THE BLUFFERS 🎭</button>`}
- else if(step<total){const o=fakes[step-2];const voters=s.votes.map((v,i)=>v===o.optionIndex?s.players[i]:null).filter(Boolean);panel=`<div class="emoji reveal-pop">${voters.length?'🤯':'😅'}</div><span class="tag">BLUFF ${step-1} OF ${fakes.length}</span><div class="reveal reveal-pop reveal-glow"><div class="muted">THE FAKE ANSWER</div><h2>“${esc(o.text)}”</h2></div><div class="reveal-pop"><div class="muted">THE MASTER BLUFFER</div><div class="reveal-owner">🎭 ${esc(s.players[o.owner])}</div><div class="muted">${voters.length?voters.length+' player(s) fell for it:':'Nobody fell for this one!'}</div><div class="reveal-voters">${voters.map(v=>`<span>🗳️ ${esc(v)}</span>`).join('')}</div><div class="reveal-points">+${voters.length} ${voters.length===1?'POINT':'POINTS'}</div></div><button class="btn" onclick="state.revealStep++;render()">${step===total-1?'ROUND RESULTS 🏆':'NEXT BLUFF →'}</button>`}
- else{panel=`<div class="emoji reveal-pop">🏆</div><h1 class="hero">Round <span class="accent">results!</span></h1>${s.players.map((p,i)=>({p,i,g:s.gains[i]})).sort((a,b)=>b.g-a.g).map(x=>`<div class="score"><span>${esc(x.p)}</span><strong>+${x.g}</strong></div>`).join('')}<button class="btn" onclick="state.screen='scores';render()">VIEW OVERALL SCOREBOARD →</button>`}
- shell(`<section class="card"><span class="tag">THE BIG REVEAL</span><div class="reveal-meter">${Array.from({length:total+1},(_,i)=>`<span class="${i<=step?'done':''}"></span>`).join('')}</div><div class="question">${esc(s.current[1])}</div>${panel}</section>`);break}
-case 'scores':shell(`<section class="card"><div class="emoji">🏆</div><h1 class="hero">Score<span class="accent">board!</span></h1>${s.players.map((p,i)=>({p,i,score:s.scores[i]})).sort((a,b)=>b.score-a.score).map((x,rank)=>`<div class="score"><span>${['🥇','🥈','🥉'][rank]||'⭐'} ${esc(x.p)}</span><strong>${x.score}</strong></div>`).join('')}<button class="btn" onclick="advance()">${s.round+1===s.rounds?'SEE THE WINNER 🏆':'NEXT ROUND →'}</button></section>`);break;
-case 'final':{const max=Math.max(...s.scores),winners=s.players.filter((p,i)=>s.scores[i]===max);shell(`<section class="card"><div class="emoji">🏆🎊</div><span class="tag">GAME OVER</span><h1 class="hero">We have a <span class="accent">winner!</span></h1><div class="winner">${winners.map(esc).join(' & ')}<br><span class="counter">${max} points</span></div>${s.players.map((p,i)=>({p,i,score:s.scores[i]})).sort((a,b)=>b.score-a.score).map((x,rank)=>`<div class="score"><span>${rank+1}. ${esc(x.p)}</span><strong>${x.score}</strong></div>`).join('')}<button class="btn" onclick="state.screen='setup';state.error='';render()">PLAY AGAIN 🔁</button><button class="btn secondary" onclick="state.screen='home';render()">HOME</button></section>`);break}
-}}
+function playRevealCues(scene,from,to){
+ if(!audioPrefs.effects)return;
+ const crossed=t=>from<t&&to>=t;
+ if(scene.kind==='bluff'||scene.kind==='truth'){
+  if(crossed(scene.authorAt))effect('reveal');
+  const at=scene.kind==='truth'?1050:700,interval=scene.kind==='truth'?250:330;
+  scene.voters.forEach((_,i)=>{if(crossed(at+i*interval))tone(540,.06,'sine',.018)});
+ }else if(scene.kind==='board')scene.awards.forEach((a,i)=>{if(crossed(550+i*620+510))tone(a.type==='tick'?880:660,.1,'triangle',.035)});
+}
+function pauseRevealClip(){if(state.screen!=='reveal'||state.revealPhase!=='running'||pauseReasons.size)return;clearRevealTimer();state.revealPhase='paused';restoreMusicLevel();saveSession();updateRevealControls()}
+function resumeRevealClip(){if(state.screen!=='reveal'||state.revealPhase!=='paused'||pauseReasons.size)return;state.revealPhase='running';saveSession();restoreMusicLevel();updateRevealControls();runRevealAnimation()}
+function completeRevealClip(){clearRevealTimer();state.revealElapsed=revealScene().duration;state.revealPhase='finished';restoreMusicLevel();updateRevealFrame();updateRevealControls();saveSession()}
+function skipRevealAnimation(){if(state.screen!=='reveal'||!['running','paused'].includes(state.revealPhase)||pauseReasons.size)return;completeRevealClip()}
+function nextReveal(){if(state.screen!=='reveal'||state.revealPhase!=='finished'||pauseReasons.size||state.revealStep>=state.players.length+2)return;state.revealStep++;beginRevealClip()}
+function finishRoundReveal(){if(state.screen!=='reveal'||revealScene().kind!=='board'||state.revealPhase!=='finished'||pauseReasons.size)return;clearRevealTimer();state.screen='scores';advance()}
+function showRoundScores(){if(state.screen==='reveal'&&revealScene().kind==='board'&&state.revealPhase==='finished'){state.screen='scores';render()}}
+function revealControl(){
+ if(state.revealPhase==='running'){pauseRevealClip();return}
+ if(state.revealPhase==='paused'){resumeRevealClip();return}
+ if(state.revealPhase==='finished'){if(revealScene().kind==='board')finishRoundReveal();else nextReveal()}
+}
+function updateRevealControls(){
+ const button=$('rxMainAction'),skip=$('rxSkip');if(!button)return;
+ const scene=revealScene();let label='CONTINUE THE REVEAL →';
+ if(state.revealPhase==='running')label='PAUSE THIS REVEAL Ⅱ';
+ else if(state.revealPhase==='finished'){
+  if(scene.kind==='board')label=state.round+1===state.rounds?'CROWN THE CHAMPION →':'NEXT ROUND OF NONSENSE →';
+  else if(scene.kind==='truth')label='ADD POINTS TO LEADERBOARD →';
+  else label=state.revealStep===state.players.length?'REVEAL THE CORRECT ANSWER →':'NEXT BLUFF →';
+ }
+ if(button.textContent!==label)button.textContent=label;
+ button.setAttribute('aria-pressed',String(state.revealPhase==='running'));
+ if(skip)skip.hidden=state.revealPhase==='finished';
+}
+function focusReveal(){document.querySelector('[data-reveal-heading]')?.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'})}
+function revealQuestion(){return `<div class="rx-question"><span class="tag">THE QUESTION</span><p>${esc(state.current[1])}</p></div>`}
+function revealBody(scene){
+ const truth=scene.kind==='truth',data=scene.bluff,voters=scene.voters;
+ return `<div class="rx-reveal ${truth?'rx-truth':''}"><span class="tag">${truth?'THE MOMENT OF TRUTH':`BLUFF ${state.revealStep} OF ${state.players.length}`}</span><h1 class="rx-title" data-reveal-heading tabindex="-1">${truth?'And the truth is…':'A convincing little fiction.'}</h1><div class="rx-story"><div class="rx-flip"><div class="rx-face rx-front"><span class="tag">${truth?'NO MORE BLUFFING':'THE BLUFF'}</span><p>${truth?'One answer was telling the truth all along.':`“${esc(data.text)}”`}</p></div><div class="rx-face rx-back" aria-hidden="true"><span class="tag">${truth?'THE CORRECT ANSWER':'BLUFF BY'}</span>${truth?`<p class="rx-truth-text">${esc(state.current[2])}</p>`:`<strong class="rx-owner">${esc(state.players[data.owner])}</strong><p>“${esc(data.text)}”</p>`}</div></div></div><div class="rx-audience"><h2>${truth?'THEY GOT IT RIGHT':'WHO VOTED FOR THIS?'}</h2><div class="rx-voters">${voters.map(name=>`<span class="rx-voter" aria-hidden="true">${truth?'<b aria-hidden="true">✓</b> ':''}${esc(name)}</span>`).join('')}${!voters.length?`<p class="rx-none">${truth?'Nobody spotted it. The truth is taking this personally.':'Nobody bit. A bold pitch; a tough room.'}</p>`:''}</div></div><div class="rx-award" aria-hidden="true"><p class="rx-award-title">${truth?(voters.length?'ONE TRUTH POINT EACH':'NO TRUTH POINTS THIS ROUND'):voters.length?`${esc(state.players[data.owner])} earns`:'NO BLUFF POINTS THIS TIME'}</p>${truth?`<div class="rx-truth-awards">${voters.map(name=>`<span>${truthToken()}<span>${esc(name)} +1</span></span>`).join('')}</div><p class="rx-explanation">${esc(state.current[3])}</p>`:voters.length?`<div class="rx-award-icons">${voters.map(()=>maskToken()).join('')}<strong>+${voters.length}</strong></div>`:'<p class="rx-zero">0 masks. Plenty of commitment.</p>'}</div></div>`;
+}
+function boardBody(scene){
+ const before=roundBase(),order=scoreOrder(before),rowHeight=76;
+ return `<div class="rx-board"><span class="tag">NOW BANK THE POINTS</span><h1 class="rx-title" data-reveal-heading tabindex="-1">Watch the leaderboard.</h1><div class="rx-tray">${scene.awards.map((a,i)=>`<span class="rx-pending" data-award="${i}">${a.type==='mask'?maskToken():truthToken()}<small>${esc(state.players[a.owner])}</small></span>`).join('')}</div><div class="rx-rows" style="height:${state.players.length*rowHeight}px">${state.players.map((name,i)=>`<div class="rx-row" data-player="${i}" style="transform:translateY(${order.indexOf(i)*rowHeight}px)"><span class="rx-rank">${competitionRank(before[i],before)}</span><span class="rx-player-name" title="${esc(name)}"><span>${esc(name)}</span><small class="rx-row-earned"></small></span><strong class="rx-total">${before[i]}</strong></div>`).join('')}</div><p class="rx-board-result"></p>${scene.awards.map((a,i)=>a.type==='mask'?maskToken('rx-flight rx-flight-'+i):truthToken('rx-flight rx-flight-'+i)).join('')}</div>`;
+}
+function renderReveal(){
+ const scene=revealScene();
+ if(scene.kind==='intro'){
+  shell(`<section class="card reveal-stage reveal-stage-v53">${revealQuestion()}<img class="rx-intro-mask" src="${MASK_URL}" alt="" width="76" height="76"><span class="tag">EVERYONE, GATHER ROUND</span><h1 class="hero" data-reveal-heading tabindex="-1">The stories are in.<br><span class="accent">You set the pace.</span></h1><p class="subtitle">Put the screen where everyone can see it. We’ll follow the votes, expose each bluffer, then uncover the truth.</p><p class="voteinfo">The strongest bluff gets the final bow. Use Next Bluff when the room is ready.</p><button type="button" class="btn" data-reveal-control onclick="startUnmasking()">REVEAL FIRST BLUFF →</button></section>`);return;
+ }
+ const total=state.players.length+2;
+ shell(`<section class="card reveal-stage reveal-stage-v53">${revealQuestion()}<div class="reveal-meter" aria-label="Reveal progress">${Array.from({length:total},(_,i)=>`<span class="${i<state.revealStep?'done':''}"></span>`).join('')}</div><div id="rxStage">${scene.kind==='board'?boardBody(scene):revealBody(scene)}</div><p id="rxStatus" class="rx-status" role="status" aria-live="polite"></p><div class="rx-controls"><button type="button" id="rxMainAction" class="btn" data-reveal-control onclick="revealControl()"></button><button type="button" id="rxSkip" class="btn secondary rx-skip" data-reveal-control onclick="skipRevealAnimation()">SKIP ANIMATION →</button></div><div class="rx-legend"><span>${maskToken('rx-legend-token','Bluff point')} Fooled someone · 1 point</span><span>${truthToken('rx-legend-token','Truth point')} Found the truth · 1 point</span></div></section>`);
+ revealSceneKey=sceneKey();revealGeometry=null;
+ if(scene.kind==='board')measureRevealBoard();
+ updateRevealFrame();updateRevealControls();
+}
+function setRevealText(element,text){if(element&&element.textContent!==String(text))element.textContent=String(text)}
+function revealReducedMotion(){return window.matchMedia('(prefers-reduced-motion: reduce)').matches}
+function updateRevealFrame(){
+ if(state.screen!=='reveal'||!$('rxStage'))return;
+ const scene=revealScene(),time=Math.max(0,Math.min(scene.duration,state.revealElapsed||0));
+ if(scene.kind==='board'){updateRevealBoard(scene,time);return}
+ const truth=scene.kind==='truth',data=scene.bluff,flip=$('rxStage').querySelector('.rx-flip'),{votersAt,authorAt,awardAt}=scene,authorShown=time>=authorAt;
+ flip.style.transform=authorShown?'rotateY(180deg)':'rotateY(0deg)';
+ flip.querySelector('.rx-front').setAttribute('aria-hidden',String(authorShown));flip.querySelector('.rx-back').setAttribute('aria-hidden',String(!authorShown));
+ $('rxStage').querySelectorAll('.rx-voter').forEach((v,i)=>{const arrived=time>=votersAt+i*(truth?250:330);v.classList.toggle('arrived',arrived);v.setAttribute('aria-hidden',String(!arrived))});
+ $('rxStage').querySelector('.rx-none')?.classList.toggle('arrived',time>=800);
+ const awarded=time>=awardAt,award=$('rxStage').querySelector('.rx-award');award.classList.toggle('arrived',awarded);award.setAttribute('aria-hidden',String(!awarded));
+ $('rxStage').querySelectorAll('.rx-award-icons .rx-token').forEach((p,i)=>p.classList.toggle('arrived',time>=awardAt+i*200));
+ let text='Take a good look at that answer.';
+ if(truth){text=time<450?'The real answer gets the final word.':time<1050?'The truth was hiding in plain sight.':!awarded?'These players found the truth.':scene.voters.length?'One green tick and +1 point for each correct voter.':'No truth points this round. Those bluffs did excellent business.'}
+ else if(time>=votersAt&&!authorShown)text=scene.voters.length?`${scene.voters.join(' and ')} believed this one. But who sold it?`:'Nobody bought it. But who is owning up to it?';
+ else if(authorShown&&!awarded)text=`The bluffer was ${state.players[data.owner]}. A straight face; an entirely invented answer.`;
+ else if(awarded)text=scene.voters.length?`One yellow mask per fooled player: ${state.players[data.owner]} earns +${scene.voters.length}.`:'No votes means no masks. Next Bluff when you’re ready.';
+ setRevealText($('rxStatus'),text);
+}
+function measureRevealBoard(){
+ const board=$('rxStage')?.querySelector('.rx-board');if(!board)return;
+ const origin=board.getBoundingClientRect();revealGeometry=roundAwards().map((a,i)=>{const from=board.querySelector(`[data-award="${i}"] .rx-token`).getBoundingClientRect(),to=board.querySelector(`[data-player="${a.owner}"] .rx-total`).getBoundingClientRect();return {x0:from.left+from.width/2-origin.left-16,y0:from.top+from.height/2-origin.top-16,x1:to.left+to.width/2-origin.left-16,y1:to.top+to.height/2-origin.top-16}});
+}
+function updateRevealBoard(scene,time){
+ const board=$('rxStage').querySelector('.rx-board');if(!revealGeometry)measureRevealBoard();
+ const before=roundBase(),oldOrder=scoreOrder(before),finalOrder=[...oldOrder].sort((a,b)=>state.scores[b]-state.scores[a]||oldOrder.indexOf(a)-oldOrder.indexOf(b));
+ const clamp=n=>Math.max(0,Math.min(1,n)),ease=p=>1-Math.pow(1-p,3),motion=revealReducedMotion(),p=clamp((time-scene.gatherEnd)/950),move=motion?(p>0?1:0):ease(p);
+ const arrived=scene.awards.filter((_,i)=>time>=550+i*620+510);
+ scene.awards.forEach((a,i)=>{
+  const start=550+i*620,progress=clamp((time-start)/510),active=time>=start&&progress<1,flight=board.querySelector('.rx-flight-'+i),pos=revealGeometry?.[i];
+  board.querySelector(`[data-award="${i}"]`).classList.toggle('spent',time>=start);
+  flight.style.display=active&&!motion&&pos?'grid':'none';
+  if(active&&pos){const t=ease(progress);flight.style.transform=`translate(${pos.x0+(pos.x1-pos.x0)*t}px,${pos.y0+(pos.y1-pos.y0)*t-50*Math.sin(Math.PI*progress)}px) scale(${1+.16*Math.sin(Math.PI*progress)})`}
+ });
+ state.players.forEach((_,i)=>{
+  const row=board.querySelector(`[data-player="${i}"]`),own=arrived.filter(a=>a.owner===i),old=oldOrder.indexOf(i),next=finalOrder.indexOf(i);
+  row.style.transform=`translateY(${(old+(next-old)*move)*76}px)`;setRevealText(row.querySelector('.rx-total'),before[i]+own.length);
+  setRevealText(row.querySelector('.rx-rank'),move>.5?competitionRank(state.scores[i],state.scores):competitionRank(before[i],before));
+  const earned=row.querySelector('.rx-row-earned'),key=own.map(a=>a.type).join(',');
+  if(earned.dataset.points!==key){earned.dataset.points=key;earned.innerHTML=own.map(a=>a.type==='mask'?maskToken('rx-earned-token'):truthToken('rx-earned-token')).join('')}
+  row.classList.toggle('rx-leader',move>.5&&state.scores[i]===Math.max(...state.scores));
+  const latest=scene.awards.flatMap((a,k)=>a.owner===i&&time>=550+k*620+510?[550+k*620+510]:[]).pop();const burst=latest===undefined?1:clamp((time-latest)/330);
+  row.querySelector('.rx-total').style.transform=motion?'none':`scale(${1+.2*Math.sin(Math.PI*burst)})`;
+ });
+ const result=board.querySelector('.rx-board-result');result.style.opacity=String(clamp((time-scene.gatherEnd-800)/350));
+ const leaders=state.players.filter((_,i)=>state.scores[i]===Math.max(...state.scores));setRevealText(result,leaders.length===1?`${leaders[0]} leads on ${Math.max(...state.scores)}.`:`A shared lead: ${leaders.join(' & ')}.`);
+ setRevealText($('rxStatus'),time<550?'The masks and ticks you earned are ready to bank.':time<scene.gatherEnd?'Each mask and tick goes to its owner. Every one adds one point.':time<scene.gatherEnd+950?'Now the leaderboard moves into its new order…':'All points banked. The room may now react.');
+}
+window.addEventListener('resize',()=>{if(state.screen==='reveal'&&revealScene().kind==='board'){revealGeometry=null;updateRevealFrame()}});
 
-// Commercial foundation: offline session recovery, premium product boundary and privacy-safe controls.
-const SAVE_KEY='bluffle.session.v5.1.freepack1';
-const PRODUCT_ID='com.bluffle.premium_lifetime';
-const FREE_QUESTIONS=JUNIOR_BANK.length+FAMILY_BANK.length+BANK.length;
-const ENTITLEMENTS={premium:false}; // NEVER set from local storage. Native store verification required.
-function saveSession(){
-  try { const snapshot={...state,selected:-1};
-    // On resume always require a fresh handoff before private content is shown.
-    if(['answer','vote'].includes(snapshot.screen)) {snapshot.screen='handoff';snapshot.deadline=null;}
-    localStorage.setItem(SAVE_KEY,JSON.stringify(snapshot));
-  } catch(e) { console.warn('Local session storage unavailable',e); }
-}
-function recoverSession(){
-  try { const raw=localStorage.getItem(SAVE_KEY); if(!raw)return false;
-    const saved=JSON.parse(raw);
-    if(!saved||!Array.isArray(saved.players)||!Array.isArray(saved.scores)||!['handoff','voteIntro','reveal','scores','final'].includes(saved.screen))return false;
-    if(saved.players.length<3||saved.players.length>10||saved.scores.length!==saved.players.length)return false;if(!Array.isArray(saved.ages)||saved.ages.length!==saved.players.length)return false;
-    state={...state,...saved,selected:-1}; return true;
-  }catch(e){return false;}
-}
-function resetSession(){if(!confirm('Erase the current game and start again?'))return;localStorage.removeItem(SAVE_KEY);state={screen:'home',players:['Player 1','Player 2','Player 3','Player 4'],rounds:5,round:0,deck:[],answers:[],votes:[],turn:0,selected:-1,scores:[],error:'',stage:'answer',current:null,revealStep:0,mode:'auto',ages:[35,35,10,7],timerSeconds:0,littleHelp:'optional',hintOpen:false,deadline:null};render()}
-function showPremium(){
- const el=document.createElement('div');el.id='premiumOverlay';el.className='premium-overlay';
- el.innerHTML=`<section class="card premium-dialog" role="dialog" aria-modal="true" aria-label="BLUFFLE Premium"><div class="emoji">👑</div><h2 class="hero">BLUFFLE! <span class="accent">Premium</span></h2><p class="subtitle">One-off £3.99 upgrade: no ads, more question packs and future standard question updates.</p><p class="tag">COMING IN THE APP STORE RELEASE</p><p class="help">This browser build is a preview. No payments are taken, no adverts are served, and Premium cannot be activated here.</p><button class="btn" onclick="document.getElementById('premiumOverlay').remove()">GOT IT</button></section>`;
- document.body.appendChild(el);
-}
-function showAbout(){
- const el=document.createElement('div');el.id='aboutOverlay';el.className='premium-overlay';
- el.innerHTML=`<section class="card premium-dialog" role="dialog" aria-modal="true" aria-label="Game settings"><h2>Settings & privacy</h2><p class="subtitle">This prototype runs locally on your device. Player names, answers and scores are stored in this browser to recover interrupted games. No accounts, tracking or ads are active.</p><p class="muted">Answer timer: off by default. Little Bluffer Help: available only to players under 10, who may open it if needed. Set the timer and question mode when starting a game.</p><p class="muted">Free question pool: ${FREE_QUESTIONS} draft questions. Remaining content requires editorial verification before commercial release.</p>${audioSettingsHtml()}<button class="btn pink" onclick="document.getElementById('aboutOverlay').remove();resetSession()">ERASE SAVED GAME</button><button class="btn secondary" onclick="document.getElementById('aboutOverlay').remove()">CLOSE</button></section>`;
- document.body.appendChild(el);
-}
+function advance(){if(state.screen!=='scores')return;state.round++;if(state.round>=state.rounds){state.screen='final';render();effect('win')}else nextRound()}
+function render(){const s=state;switch(s.screen){
+ case 'home':home();break;
+ case 'setup':shell(`<section class="card"><span class="tag">ASSEMBLE YOUR SUSPECTS</span><h1 class="hero">Who’s bringing<br><span class="accent">the nonsense?</span></h1><p class="subtitle">3–10 players. Names, nicknames or entirely unconvincing aliases.</p>${s.players.map((p,i)=>`<div class="row player"><span aria-hidden="true"><img class="mask-inline" src="${MASK_URL}" alt="" width="23" height="23"></span><input aria-label="Player ${i+1} name" class="input" maxlength="24" value="${esc(p)}" oninput="updatePlayer(${i},this.value)"><button type="button" class="btn secondary small" aria-label="Remove player ${i+1}" onclick="removePlayer(${i})" ${s.players.length<=3?'disabled':''}>✕</button></div>`).join('')}<button class="btn secondary" onclick="addPlayer()" ${s.players.length>=10?'disabled':''}>+ ADD A BLUFFER</button><fieldset class="mode-picker"><legend>Choose your question mode</legend>${[['kids','Kids','Gentler questions. Wild imaginations.',JUNIOR_BANK.length],['classic','Classic','The full mixed bag. Bring your poker face.',FREE_QUESTIONS]].map(([value,label,detail,count])=>`<label class="mode-choice"><input type="radio" name="questionMode" value="${value}" ${s.mode===value?'checked':''} onchange="setGameSetting('mode',this.value)"><span><strong>${label}</strong><small>${detail}<br>${count} free questions</small></span></label>`).join('')}</fieldset><details class="setup-ages"><summary>Player ages & Little Bluffer Help</summary><p class="help">Ages only control optional hints for under-10s. Your chosen Kids or Classic mode controls the questions.</p><div class="age-grid">${s.players.map((p,i)=>`<label class="age-item">${esc(p)}<select class="input" aria-label="Age for ${esc(p)}" onchange="updateAge(${i},this.value)">${[7,8,9,10,11,12,13,14,16,18,25,35,45,60].map(n=>`<option value="${n}" ${Number(s.ages[i]||10)===n?'selected':''}>${n}${n===60?'+':''}</option>`).join('')}</select></label>`).join('')}</div></details><label class="setup-label">Answer time limit<select class="input" onchange="setGameSetting('timerSeconds',Number(this.value))">${[[0,'Off — let the nonsense breathe'],[30,'30 seconds'],[60,'60 seconds'],[90,'90 seconds'],[120,'2 minutes']].map(([v,l])=>`<option value="${v}" ${s.timerSeconds===v?'selected':''}>${l}</option>`).join('')}</select></label><label class="setup-label">Number of rounds<select class="input" onchange="setGameSetting('rounds',Number(this.value))">${[5,10,15].map(n=>`<option value="${n}" ${n===s.rounds?'selected':''}>${n} rounds</option>`).join('')}</select></label><div class="error" role="alert">${esc(s.error)}</div><button class="btn" onclick="start()">LET THE TALL TALES BEGIN →</button></section>`);break;
+ case 'question':shell(`<section class="card"><span class="tag">${esc(s.current[0])} · ${s.mode==='kids'?'KIDS':'CLASSIC'}</span><h1 class="hero">Your next<br><span class="accent">cover story.</span></h1><p class="subtitle">Everyone can look at this bit. The truth is safely under wraps.</p><div class="question">${esc(s.current[1])}</div><button class="btn" onclick="beginBluffing()">THAT’LL DO. LET’S BLUFF →</button>${questionChangeButton()}</section>`);break;
+ case 'handoff':shell(`<section class="card"><span class="tag">${s.stage==='answer'?'SECRET BLUFF':'SECRET VOTE'}</span><div class="emoji" aria-hidden="true">📱</div><h1 class="hero">Over to<br><span class="accent">${esc(s.players[s.turn])}.</span></h1><p class="subtitle">${s.stage==='answer'?'Everyone else: eyes elsewhere. Genius needs privacy. So does nonsense.':'One private vote. An entirely public reckoning later.'}</p><div class="progress">${s.players.map((_,i)=>`<span class="${i<s.turn?'done':''}"></span>`).join('')}</div><button class="btn" onclick="${s.stage==='answer'?'startAnswer()':'startVote()'}">I’M ${esc(s.players[s.turn]).toUpperCase()} — NO PEEKING →</button>${questionChangeButton()}</section>`);break;
+ case 'answer':shell(`<section class="card"><span class="tag">${esc(s.current[0])} · BLUFFER ${s.turn+1}/${s.players.length}</span><div class="question">${esc(s.current[1])}</div><p class="subtitle">${esc(s.players[s.turn])}, give us something wonderfully plausible.</p>${s.timerSeconds&&(s.deadline||s.timerExpired)?`<div id="answerTimer" class="pill answer-timer">⏱ <span>Time remaining:</span> <span id="timeLeft">${s.deadline?Math.max(0,Math.ceil((s.deadline-Date.now())/1000))+'s':"Time’s up!"}</span></div>`:''}<div id="lastSeconds" class="last-seconds" hidden aria-hidden="true"><small>Seconds left</small><strong id="lastSecondsNumber"></strong></div>${isLittleBluffer()?`<button type="button" class="btn secondary" onclick="toggleHint()">💡 ${s.hintOpen?'HIDE HELP':'LITTLE BLUFFER HELP'}</button>${s.hintOpen?`<div class="hintbox"><strong>A little nudge…</strong><p>${esc(s.current[4]||'Invent something that sounds like it could be true.')}</p><small>Your imagination does the rest. The real answer stays secret.</small></div>`:''}`:''}<form onsubmit="event.preventDefault();answerSubmit()"><input id="answer" class="input" autocomplete="off" autocapitalize="sentences" maxlength="110" placeholder="Your finest piece of fiction…" aria-label="Your fake answer"><div id="err" class="error" role="alert"></div><button type="submit" class="btn">LOCK IN MY BLUFF 🔒</button><button type="button" id="skipAnswer" class="btn secondary" ${s.timerExpired?'':'hidden'} onclick="skipAnswer()">SKIP THIS ANSWER</button></form><p class="help">Once locked in, your bluff is hidden. Keep that face innocent.</p>${questionChangeButton()}</section>`);break;
+ case 'voteIntro':shell(`<section class="card"><div class="emoji" aria-hidden="true">🗳️</div><h1 class="hero">A pack of lies.<br><span class="accent">One awkward truth.</span></h1><p class="subtitle">${s.players.length} bluffs and one real answer have been shuffled together. Each player votes in secret. Trust your instincts. Or someone’s excellent nonsense.</p><p class="voteinfo">You can’t vote for your own bluff. That would be admiring the merchandise.</p><button class="btn" onclick="startVoting()">TIME TO PICK A SIDE →</button>${questionChangeButton()}</section>`);break;
+ case 'vote':shell(`<section class="card"><span class="tag">${esc(s.current[0])} · VOTER ${s.turn+1}/${s.players.length}</span><div class="question">${esc(s.current[1])}</div><p class="subtitle">${esc(s.players[s.turn])}, which answer has the least fiction in it?</p>${s.options.map((o,i)=>`<button class="option ${s.selected===i?'selected':''}" onclick="state.selected=${i};state.error='';render()" ${o.owner===s.turn?'disabled':''}><span class="letter">${String.fromCharCode(65+i)}</span><span>${esc(votingText(o.text))}${o.owner===s.turn?' <small>(your handiwork)</small>':''}</span></button>`).join('')}<div class="error" role="alert">${esc(s.error)}</div><button class="btn" onclick="voteSubmit()" ${s.selected<0?'disabled':''}>LOCK IN MY VOTE 🔒</button></section>`);break;
+ case 'reveal':renderReveal();break;
+ case 'scores':shell(`<section class="card"><span class="tag">THE NUMBERS DON’T BLUFF</span><h1 class="hero">The overall<br><span class="accent">scoreboard.</span></h1>${s.players.map((p,i)=>({p,i,score:s.scores[i]})).sort((a,b)=>b.score-a.score).map((x,rank)=>`<div class="score"><span>${['🥇','🥈','🥉'][rank]||'⭐'} ${esc(x.p)}</span><strong>${x.score}</strong></div>`).join('')}<button class="btn" onclick="advance()">${s.round+1===s.rounds?'CROWN THE CHAMPION →':'ANOTHER ROUND OF NONSENSE →'}</button></section>`);break;
+ case 'final':{const max=Math.max(...s.scores),winners=s.players.filter((p,i)=>s.scores[i]===max);shell(`<section class="card"><div class="emoji" aria-hidden="true">🏆<img class="mask-inline" src="${MASK_URL}" alt="" width="23" height="23"></div><span class="tag">THE BLUFF STOPS HERE</span><h1 class="hero">${winners.length>1?'A shared throne.':'All hail the'}<br><span class="accent">${winners.length>1?'Double the nerve.':'chief of disbelief.'}</span></h1><div class="winner">${winners.map(esc).join(' & ')}<br><span class="counter">${max} ${max===1?'point':'points'}</span></div><p class="subtitle">${winners.length>1?'Equally convincing. Equally untrustworthy. We mean that affectionately.':'A thoroughly questionable performance. A thoroughly deserved victory.'}</p>${s.players.map((p,i)=>({p,i,score:s.scores[i]})).sort((a,b)=>b.score-a.score).map((x,rank)=>`<div class="score"><span>${competitionRank(x.score,s.scores)}. ${esc(x.p)}</span><strong>${x.score}</strong></div>`).join('')}<button class="btn" onclick="setup()">DEMAND A REMATCH →</button><button class="btn secondary" onclick="clearActiveGame()">HOME</button></section>`);break}
+}}
+function saveSession(){try{const snapshot={...state,experienceVersion:53,selected:-1};if(snapshot.screen==='reveal'&&snapshot.revealPhase==='running')snapshot.revealPhase='paused';if(['answer','vote'].includes(snapshot.screen)){snapshot.screen='handoff';snapshot.deadline=null}localStorage.setItem(SAVE_KEY,JSON.stringify(snapshot))}catch(e){console.warn('Local session storage unavailable',e)}}
+function recoverSession(){try{
+ const saved=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');if(!saved||!Array.isArray(saved.players)||!Array.isArray(saved.scores)||!['question','handoff','voteIntro','reveal','scores','final'].includes(saved.screen))return false;
+ if(saved.players.length<3||saved.players.length>10||saved.scores.length!==saved.players.length||!Array.isArray(saved.ages)||saved.ages.length!==saved.players.length||!Array.isArray(saved.deck))return false;
+ const mode=['kids','classic'].includes(saved.mode)?saved.mode:saved.mode==='junior'||saved.mode==='auto'&&Math.min(...saved.ages)<10?'kids':'classic';
+ state={...freshState(),...saved,experienceVersion:53,mode,selected:-1,deadline:null};
+ if(!Array.isArray(state.seenQuestionIds))state.seenQuestionIds=[];
+ state.seenQuestionIds=[...new Set([...state.seenQuestionIds,...state.deck.slice(0,state.round+1).map(q=>q[5])])];
+ if(['reveal','scores','final'].includes(state.screen))state.hasScored=true;
+ if(state.screen==='reveal'){
+  if(!Array.isArray(state.options)||!Array.isArray(state.votes)||state.votes.length!==state.players.length||state.votes.some(v=>!state.options[v]))throw Error('Invalid saved reveal');
+  if(state.options.length!==state.players.length+1||new Set(state.options.map(o=>o.owner)).size!==state.options.length||state.options.some(o=>typeof o.text!=='string'||!Number.isInteger(o.owner)||o.owner< -1||o.owner>=state.players.length))throw Error('Invalid saved options');
+  if(!Array.isArray(state.gains)||state.gains.length!==state.players.length)throw Error('Invalid saved points');
+  if(saved.experienceVersion!==53){state.revealStep=0;state.revealPhase='ready';state.revealElapsed=0;state.roundBaseScores=state.scores.map((n,i)=>n-state.gains[i]);}
+  if(!Number.isInteger(state.revealStep)||state.revealStep<0||state.revealStep>state.players.length+2)state.revealStep=0;
+  if(!Array.isArray(state.roundBaseScores)||state.roundBaseScores.length!==state.players.length)state.roundBaseScores=state.scores.map((n,i)=>n-state.gains[i]);
+  if(state.revealStep===0){state.revealPhase='ready';state.revealElapsed=0;}
+  else{state.revealElapsed=Math.max(0,Math.min(revealScene().duration,Number(state.revealElapsed)||0));if(state.revealPhase!=='finished')state.revealPhase='paused';if(state.revealElapsed>=revealScene().duration)state.revealPhase='finished';}
+ }
+ return true;
+}catch(e){state=freshState();return false}}
+function showPremium(){openGameDialog('premiumDialog','A little more bluff?',`<p class="subtitle">Premium is planned as a one-off £3.99 unlock with more questions. For now, this is a preview: no purchase or restoration is available, and no payments are taken.</p><button class="btn" data-dialog-action="cancel" autofocus>BACK TO THE GOOD STUFF</button>`,'premium')}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseGame('hidden');else resumeGame('hidden')});
+
 // BLUFFLE! audio: synthesized effects plus the approved bundled music loop.
 const AUDIO_KEY='bluffle_audio_v1';
 let audioPrefs={music:true,effects:true};
@@ -233,7 +405,7 @@ function startMusic(){
  const source=audioCtx.createBufferSource(),gain=audioCtx.createGain();
  source.buffer=musicBuffer;source.loop=true;
  gain.gain.setValueAtTime(0,audioCtx.currentTime);
- gain.gain.linearRampToValueAtTime(MUSIC_VOLUME,audioCtx.currentTime+.12);
+ gain.gain.linearRampToValueAtTime(currentMusicVolume(),audioCtx.currentTime+.12);
  source.connect(gain);gain.connect(audioCtx.destination);
  musicStartedAt=audioCtx.currentTime;
  source.start(musicStartedAt,musicOffset%musicBuffer.duration);
@@ -268,6 +440,7 @@ function setAudioPref(kind,enabled){audioPrefs[kind]=Boolean(enabled);
 document.addEventListener('click',e=>{
  if(!e.target.closest('button'))return;
  const first=!audioCtx;ensureAudio();if(first)syncMusic();
+ if(e.target.closest('[data-reveal-control]'))return;
  const label=(e.target.closest('button').textContent||'').toLowerCase();
  if(label.includes('reveal')||label.includes('unmask')||label.includes('next bluff'))effect('reveal');
  else if(label.includes('winner')||label.includes('results'))effect('win');
@@ -279,9 +452,5 @@ window.addEventListener('pagehide',stopMusic);
 window.addEventListener('pageshow',syncMusic);
 function audioSettingsHtml(){return `<div class="audio-settings"><h3>🎵 Sound & music</h3><label class="audio-toggle"><span>Background music</span><input type="checkbox" ${audioPrefs.music?'checked':''} onchange="setAudioPref('music',this.checked)"></label><label class="audio-toggle"><span>Sound effects</span><input type="checkbox" ${audioPrefs.effects?'checked':''} onchange="setAudioPref('effects',this.checked)"></label><p id="audioStatus" class="help">Music starts after your first tap. Settings are remembered on this device.</p></div>`}
 
-const oldHome=home;
-home=function(){oldHome();const card=document.querySelector('.card');if(card){card.insertAdjacentHTML('beforeend','<button class="btn pink" onclick="showPremium()">👑 PREMIUM — £3.99 PREVIEW</button><button class="btn secondary" onclick="showAbout()">⚙️ SETTINGS & PRIVACY</button>');}}
-const oldRender=render;
-render=function(){oldRender();saveSession();};
-if(recoverSession())render();else render();
+recoverSession();render();
 </script></body></html>
