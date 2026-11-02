@@ -1,4 +1,3 @@
-
 workflows:
   ios-simulator-beta:
     name: BLUFFLE iOS Simulator (unsigned)
@@ -56,6 +55,19 @@ workflows:
         script: |
           cd ios/App
           pod install
+
+      - name: Set a unique Apple build number
+        script: |
+          #!/usr/bin/env bash
+          set -euo pipefail
+          if [[ ! "${PROJECT_BUILD_NUMBER:-}" =~ ^[0-9]+$ ]]; then
+            echo "Codemagic PROJECT_BUILD_NUMBER is missing or invalid."
+            exit 1
+          fi
+          BLUFFLE_BUILD_NUMBER=$((10#$PROJECT_BUILD_NUMBER + 1))
+          cd "$CM_BUILD_DIR/ios/App"
+          agvtool new-version -all "$BLUFFLE_BUILD_NUMBER"
+          echo "BLUFFLE! App Store build number: $BLUFFLE_BUILD_NUMBER"
 
       - name: Apply Apple signing profiles
         script: |
