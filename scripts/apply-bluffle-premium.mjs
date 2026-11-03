@@ -22,5 +22,18 @@ if (!/customClass="(?:CAPBridgeViewController|BluffleViewController)"/.test(xml)
 xml = xml.replace(/customClass="(?:CAPBridgeViewController|BluffleViewController)"(?: customModule="[^"]*")?(?: customModuleProvider="[^"]*")?/,
   'customClass="BluffleViewController" customModule="App" customModuleProvider="target"');
 fs.writeFileSync(storyboard, xml);
+// The app uses Apple's OS services, with no non-exempt encryption implementation.
+const plistPath = path.join(app, 'Info.plist');
+let plist = fs.readFileSync(plistPath, 'utf8');
+if (!plist.includes('<plist') || !plist.includes('</dict>')) throw Error('Unexpected Info.plist format.');
+if (plist.includes('<key>ITSAppUsesNonExemptEncryption</key>')) {
+  const setting = /(<key>ITSAppUsesNonExemptEncryption<\/key>\s*)<(?:true|false)\s*\/>/;
+  if (!setting.test(plist)) throw Error('Unexpected encryption declaration format.');
+  plist = plist.replace(setting, '$1<false/>');
+} else {
+  const lastDict = plist.lastIndexOf('</dict>');
+  plist = plist.slice(0, lastDict) + '  <key>ITSAppUsesNonExemptEncryption</key>\n  <false/>\n' + plist.slice(lastDict);
+}
+fs.writeFileSync(plistPath, plist);
 execFileSync('ruby', [path.join(root, 'scripts/register-bluffle-premium.rb')], {cwd: root, stdio: 'inherit'});
 console.log('BLUFFLE native Premium purchase bridge and 360 questions installed.');
