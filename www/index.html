@@ -278,6 +278,49 @@ dialog:not(.startup-dialog){inset:var(--bluffle-safe-top) var(--bluffle-safe-rig
 }
 @media(max-width:374px){.player-help{font-size:10px;gap:4px}.player-help input{width:18px;height:18px}.app[data-screen="setup"] .player{gap:5px}}
 
+
+/* No double-tap page zoom; normal scrolling, text editing and pinch remain available. */
+html,body,button,a,label,summary,input,select,textarea,.app,.card,.option{touch-action:manipulation}
+input,textarea,select{font-size:max(16px,1em)}
+.premium-settings-button{display:flex;flex-direction:column;align-items:center;gap:7px;margin:14px 0 22px;text-align:center;line-height:1.3}
+.premium-settings-button strong{font-size:20px}.premium-settings-meta{font-size:12px;font-weight:600;letter-spacing:.2px}
+#audioStatus:empty{display:none}
+@media(min-width:760px) and (orientation:portrait){
+ .app:is([data-screen="handoff"],[data-screen="voteIntro"],[data-screen="answer"],[data-screen="vote"],[data-screen="question"])>.card{margin-top:clamp(18px,calc(7dvh - 18px),86px)}
+}
+@media(min-width:760px) and (orientation:landscape) and (min-height:760px){
+ .app:is([data-screen="handoff"],[data-screen="voteIntro"],[data-screen="answer"],[data-screen="vote"],[data-screen="question"])>.card{position:relative;top:-18px}
+}
+/* Pin the answer screen to the visible viewport, not the full pre-keyboard page.
+   Long hints scroll inside their panel; they cannot push the question away. */
+html.answer-keyboard-open,html.answer-keyboard-open body{overflow:hidden;overscroll-behavior:none}
+.app.keyboard-open[data-screen="answer"]{position:fixed;top:var(--bluffle-visual-top,0px);left:50%;transform:translateX(-50%);width:100%;height:var(--bluffle-visible-height,100dvh);min-height:0;max-height:var(--bluffle-visible-height,100dvh);display:flex;flex-direction:column;gap:8px;padding:calc(8px + var(--bluffle-safe-top)) calc(16px + var(--bluffle-safe-right)) 10px calc(16px + var(--bluffle-safe-left));overflow:hidden}
+.app.keyboard-open[data-screen="answer"]>.top{margin:0;min-height:40px;flex:none}
+.app.keyboard-open[data-screen="answer"]>.card.play-layout{position:static;top:auto;transform:none;display:flex;flex-direction:column;align-items:stretch;gap:10px;flex:1;min-height:0;max-height:100%;padding:14px;margin:0;border-radius:22px;overflow:hidden}
+.app.keyboard-open[data-screen="answer"] .play-question{flex:none;min-height:0;max-height:42%;overflow:auto;overscroll-behavior:contain}
+.app.keyboard-open[data-screen="answer"] .play-question>.tag{font-size:10px;letter-spacing:1px}
+.app.keyboard-open[data-screen="answer"] .play-question .question{font-size:20px;line-height:1.25;padding:10px 12px;margin:8px 0 0}
+.app.keyboard-open[data-screen="answer"] .play-question .question::before{display:none}
+.app.keyboard-open[data-screen="answer"] .play-question>.subtitle{display:none}
+.app.keyboard-open[data-screen="answer"] .play-response{flex:1;min-height:0;max-height:100%;padding:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scroll-padding:10px}
+.app.keyboard-open[data-screen="answer"] .play-response>.btn.secondary{margin:0 0 8px;font-size:12px;min-height:40px;padding:9px 12px}
+.app.keyboard-open[data-screen="answer"] .play-response form .input{min-height:48px;margin:0 0 8px;font-size:17px;padding:11px 12px}
+.app.keyboard-open[data-screen="answer"] .play-response form>.btn{min-height:46px;margin:8px 0 6px;padding:11px 12px;font-size:14px}
+.app.keyboard-open[data-screen="answer"] .play-response form>.error:empty{display:none;min-height:0;margin:0}
+.app.keyboard-open[data-screen="answer"] .play-response>.help{display:none}
+.app.keyboard-open[data-screen="answer"] .hintbox{font-size:14px;line-height:1.45;padding:12px;margin:8px 0}
+.app.keyboard-open[data-screen="answer"] .hintbox small{display:none}
+@media(min-width:760px){
+ .app.keyboard-open[data-screen="answer"]{padding:calc(8px + var(--bluffle-safe-top)) calc(24px + var(--bluffle-safe-right)) 12px calc(24px + var(--bluffle-safe-left))}
+ .app.keyboard-open[data-screen="answer"]>.card.play-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;padding:16px 20px}
+ .app.keyboard-open[data-screen="answer"] .play-question{max-height:100%;align-self:stretch;padding:5px 0}
+ .app.keyboard-open[data-screen="answer"] .play-question .question{font-size:clamp(23px,2.6vw,31px);line-height:1.25;padding:0;margin:18px 0 0}
+ .app.keyboard-open[data-screen="answer"] .play-question>.subtitle{display:block;font-size:14px;line-height:1.4;margin:16px 0 0}
+ .app.keyboard-open[data-screen="answer"] .play-response{padding:12px 14px;border-radius:16px;align-self:stretch}
+ .app.keyboard-open[data-screen="answer"] .play-response form .input{min-height:52px;font-size:18px}
+ .app.keyboard-open[data-screen="answer"] .play-response form>.btn{font-size:16px;min-height:48px}
+}
+
 </style></head><body><main id="app" class="app" aria-live="polite"></main>
 <script>
 'use strict';
@@ -292,7 +335,7 @@ const FREE_PACK_ID="fixed-free-25-per-mode-2026-11-03";
 const legalLink=path=>(window.Capacitor?.isNativePlatform?.()?'https://www.bluffle.co.uk/':'')+path;
 const MASK_URL='assets/mask-point-v1.png?v=mask1';
 const SAVE_KEY='bluffle.session.v5.1.freepack1'; // Keep and migrate existing local games.
-const APP_VERSION='5.24';
+const APP_VERSION='5.25';
 const PRODUCT_ID='com.bluffle.premium_lifetime';
 const FREE_QUESTIONS=JUNIOR_BANK.length+FAMILY_BANK.length+BANK.length;
 const ENTITLEMENTS={premium:false};
@@ -324,19 +367,82 @@ function arrangeScreen(){
  }
 }
 
-// VisualViewport shrinks for the software keyboard in WKWebView. Remove tablet
-// vertical spacing then; keep the active field and submit action easy to reach.
-let tabletKeyboardOpen=false;
-function syncTabletViewport(){
- const active=document.activeElement,editing=active?.matches('input:not([type=checkbox]):not([type=radio]),textarea');
- const viewport=window.visualViewport;
- const open=Boolean(editing&&viewport&&window.innerHeight-viewport.height>140);
- app.classList.toggle('keyboard-open',open);
- if(open!==tabletKeyboardOpen){tabletKeyboardOpen=open;if(open)requestAnimationFrame(()=>active?.scrollIntoView({block:'nearest',inline:'nearest'}))}
+// Keep WKWebView full-bleed; the native plugin resizes the body and reports the
+// keyboard height. The answer composition occupies only the unobscured area.
+let nativeKeyboardVisible=false,nativeKeyboardHeight=0,unobscuredHeight=window.innerHeight;
+let keyboardSyncFrame=null,keyboardScrollDisabled=false,keyboardBridgeInitialized=false;
+function keyboardPlugin(){
+ const cap=window.Capacitor;
+ if(cap?.getPlatform?.()!=='ios'||!cap.isPluginAvailable?.('Keyboard'))return null;
+ return cap.Plugins?.Keyboard||(cap.registerPlugin?cap.registerPlugin('Keyboard'):null);
 }
-window.visualViewport?.addEventListener('resize',syncTabletViewport);
-document.addEventListener('focusin',syncTabletViewport);
-document.addEventListener('focusout',()=>requestAnimationFrame(syncTabletViewport));
+function initializeKeyboard(){
+ if(keyboardBridgeInitialized)return;
+ const plugin=keyboardPlugin();if(!plugin)return;
+ keyboardBridgeInitialized=true;
+ Promise.resolve(plugin.setResizeMode({mode:'body'})).catch(()=>{});
+}
+function queueKeyboardSync(){
+ if(keyboardSyncFrame!==null)return;
+ keyboardSyncFrame=requestAnimationFrame(()=>{keyboardSyncFrame=null;syncTabletViewport()});
+}
+function syncTabletViewport(){
+ const active=document.activeElement,editing=Boolean(active?.matches('input:not([type=checkbox]):not([type=radio]),textarea'));
+ const viewport=window.visualViewport,visible=viewport?.height||window.innerHeight;
+ const visualKeyboard=editing&&window.innerHeight-visible>140;
+ if(!nativeKeyboardVisible&&!visualKeyboard&&!editing)unobscuredHeight=window.innerHeight;
+ const open=Boolean(state.screen==='answer'&&(nativeKeyboardVisible||visualKeyboard));
+ const nativeVisibleHeight=nativeKeyboardVisible?Math.max(120,unobscuredHeight-nativeKeyboardHeight):window.innerHeight;
+ const height=Math.max(120,Math.floor(Math.min(window.innerHeight,visible,nativeVisibleHeight)));
+ app.style.setProperty('--bluffle-visible-height',height+'px');
+ app.style.setProperty('--bluffle-visual-top',Math.max(0,viewport?.offsetTop||0)+'px');
+ app.classList.toggle('keyboard-open',open);
+ document.documentElement.classList.toggle('answer-keyboard-open',open);
+ if(open!==keyboardScrollDisabled){
+  keyboardScrollDisabled=open;
+  const plugin=keyboardPlugin();
+  if(plugin)Promise.resolve(plugin.setScroll({isDisabled:open})).catch(()=>{});
+  // Do not scroll the entire page to the focused field: its own panel can scroll.
+  if(open)window.scrollTo({top:0,left:0,behavior:'instant'});
+ }
+}
+window.addEventListener('keyboardWillShow',event=>{
+ if(!nativeKeyboardVisible)unobscuredHeight=Math.max(unobscuredHeight,window.innerHeight);
+ nativeKeyboardVisible=true;
+ nativeKeyboardHeight=Math.max(0,Number(event.keyboardHeight??event.detail?.keyboardHeight)||0);
+ syncTabletViewport();
+});
+window.addEventListener('keyboardDidShow',event=>{
+ nativeKeyboardVisible=true;
+ nativeKeyboardHeight=Math.max(0,Number(event.keyboardHeight??event.detail?.keyboardHeight)||nativeKeyboardHeight);
+ syncTabletViewport();queueKeyboardSync();
+});
+window.addEventListener('keyboardDidHide',()=>{
+ nativeKeyboardVisible=false;nativeKeyboardHeight=0;
+ syncTabletViewport();queueKeyboardSync();
+ if(state.screen==='answer')window.scrollTo({top:0,left:0,behavior:'instant'});
+});
+window.addEventListener('resize',()=>{
+ if(nativeKeyboardVisible)unobscuredHeight=window.innerHeight;
+ queueKeyboardSync();
+});
+window.visualViewport?.addEventListener('resize',queueKeyboardSync);
+window.visualViewport?.addEventListener('scroll',queueKeyboardSync);
+document.addEventListener('focusin',()=>{initializeKeyboard();syncTabletViewport()});
+document.addEventListener('focusout',queueKeyboardSync);
+// Leave text selection and ordinary clicks intact while suppressing page zoom.
+document.addEventListener('dblclick',event=>{
+ if(!event.target.closest('input,textarea,[contenteditable="true"]'))event.preventDefault();
+});
+let lastSurfaceTap=null;
+document.addEventListener('touchend',event=>{
+ if(event.touches.length||event.changedTouches.length!==1)return;
+ const target=event.target;
+ if(target.closest('input,textarea,select,button,a,label,summary,[contenteditable="true"]')){lastSurfaceTap=null;return}
+ const touch=event.changedTouches[0],now=performance.now();
+ if(lastSurfaceTap&&now-lastSurfaceTap.time<330&&Math.hypot(touch.clientX-lastSurfaceTap.x,touch.clientY-lastSurfaceTap.y)<28){event.preventDefault();lastSurfaceTap=null}
+ else lastSurfaceTap={time:now,x:touch.clientX,y:touch.clientY};
+},{passive:false});
 
 function boardRowHeight(){return window.matchMedia('(min-width:760px)').matches?(window.innerHeight<=900?60:70):64}
 function boardColumnCount(){return window.matchMedia('(min-width:760px)').matches&&state.players.length>5?2:1}
@@ -358,7 +464,7 @@ function shell(content){
 function sceneKey(){return [state.screen,state.stage,state.round,state.turn,state.current?.[5],state.revealStep].join('|')}
 function clearActiveGame(){
  clearInterval(timerHandle);timerHandle=null;clearRevealTimer();pauseReasons.clear();pausedClocks=null;
- const {mode,timerSeconds,rounds}=state;state={...freshState(),mode,timerSeconds,rounds};
+ const {timerSeconds,rounds}=state;state={...freshState(),timerSeconds,rounds};
  saveSession();restoreMusicLevel();render();
 }
 
@@ -386,7 +492,7 @@ function feedbackEmailLink(category){
 function communitySettingsHtml(){return `<section class="settings-community" aria-label="Feedback and more games"><details class="settings-disclosure" id="feedbackSection"><summary>Send feedback<span aria-hidden="true">⌄</span></summary><div class="settings-disclosure-body"><p>Suggest the next great topic, flag a questionable answer, or tell us what needs fixing.</p><nav class="feedback-links" aria-label="Feedback choices">${[['Suggest a topic','Topic suggestion'],['Suggest or correct a question','Question feedback'],['Report a problem','Problem report'],['Other feedback','General feedback']].map(([label,category])=>`<a href="${feedbackEmailLink(category)}">${label} ↗</a>`).join('')}</nav><p class="feedback-note">Opens your email app. Your message is sent when you choose Send.</p></div></details><details class="settings-disclosure" id="moreGamesSection"><summary>More games from us<span aria-hidden="true">⌄</span></summary><div class="settings-disclosure-body"><article class="more-game-card"><img class="more-game-logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgMzUwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0ibG9nby10aXRsZSBsb2dvLWRlc2MiPgo8dGl0bGUgaWQ9ImxvZ28tdGl0bGUiPlVOUkVNQVJLQUJMRSE8L3RpdGxlPjxkZXNjIGlkPSJsb2dvLWRlc2MiPkZpdmUgcmlzaW5nIGJhcnMuIFJlZCBleHRyZW1lcywgYmx1ZSBvcmRpbmFyeSBiYXJzLCBhbmQgYSBjcm93bmVkIGxpbWUgd2lubmVyIGluIHRoZSBtaWRkbGUuPC9kZXNjPgo8cGF0aCBkPSJNODUgMjUxSDU1NSIgc3Ryb2tlPSIjNjY3MDk1IiBzdHJva2Utd2lkdGg9IjIiLz4KPGc+PHJlY3QgY2xhc3M9ImxvZ28tYmFyIiB4PSIxMTIiIHk9IjIwMiIgd2lkdGg9IjYyIiBoZWlnaHQ9IjQ4IiByeD0iNyIgZmlsbD0iI2ZmN2U5NCIvPjxyZWN0IGNsYXNzPSJsb2dvLWJhciIgeD0iMjAwIiB5PSIxNTciIHdpZHRoPSI2MiIgaGVpZ2h0PSI5MyIgcng9IjciIGZpbGw9IiM5MWI4ZjciLz48cmVjdCBjbGFzcz0ibG9nby1iYXIiIHg9IjI4OCIgeT0iMTEzIiB3aWR0aD0iNjIiIGhlaWdodD0iMTM3IiByeD0iNyIgZmlsbD0iI2Q0ZmY2MyIvPjxyZWN0IGNsYXNzPSJsb2dvLWJhciIgeD0iMzc2IiB5PSI3MCIgd2lkdGg9IjYyIiBoZWlnaHQ9IjE4MCIgcng9IjciIGZpbGw9IiM5MWI4ZjciLz48cmVjdCBjbGFzcz0ibG9nby1iYXIiIHg9IjQ2NCIgeT0iMjYiIHdpZHRoPSI2MiIgaGVpZ2h0PSIyMjQiIHJ4PSI3IiBmaWxsPSIjZmY3ZTk0Ii8+PC9nPgo8cGF0aCBjbGFzcz0ibG9nby1jcm93biIgZD0iTTI5NiA3MiAzMDcgODMgMzE5IDY0IDMzMSA4MyAzNDIgNzIgMzM4IDEwMUgzMDBaIiBmaWxsPSIjZDRmZjYzIiBzdHJva2U9IiNlZmZmYmIiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjx0ZXh0IHg9IjMyMCIgeT0iMzA3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTMiIGZvbnQtd2VpZ2h0PSI5MDAiIGxldHRlci1zcGFjaW5nPSItMiIgZmlsbD0iI2Y4ZjdmMiI+VU5SRU1BUktBQkxFPHRzcGFuIGZpbGw9IiNkNGZmNjMiPiE8L3RzcGFuPjwvdGV4dD4KPHRleHQgeD0iMzIwIiB5PSIzMzciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjMuNSIgZmlsbD0iI2I4YmZkOSI+VEhFIFBBUlRZIEdBTUUgV0hFUkUgQVZFUkFHRSBXSU5TPC90ZXh0Pgo8L3N2Zz4K" width="320" height="175" alt="UNREMARKABLE! — the party game where average wins"><p>Don’t guess the answer. Guess your opponents.<br>Aim for the middle — be unremarkable!</p><a class="more-game-link" href="https://unremarkable.uk/" target="_blank" rel="noopener noreferrer">Discover UNREMARKABLE! ↗</a></article></div></details></section>`}
 function showSettings(){
  const playing=!['home','setup'].includes(state.screen);
- const dialog=openGameDialog('settingsDialog','Behind the bluff',`<div id="settingsContent" class="settings-scroll"><p class="subtitle">Keep the confidence wildly overestimated.</p>${audioSettingsHtml()}<p class="help">${playing?'Your game is paused. Your typed answer and votes stay where you left them.':'Music starts off each time you open the game. Your sound-effects choice is remembered.'}</p><nav class="settings-links" aria-label="Help and legal information"><a href="${legalLink('privacy/')}" target="_blank" rel="noopener">Privacy Policy ↗</a><a href="${legalLink('terms/')}" target="_blank" rel="noopener">Terms of Use ↗</a><a href="${legalLink('support/')}" target="_blank" rel="noopener">Support ↗</a><a href="mailto:support@bluffle.co.uk">Email support</a></nav>${communitySettingsHtml()}<button type="button" class="btn secondary" onclick="openPremiumFromSettings()">PREMIUM &amp; RESTORE PURCHASES</button><p class="help">Play stays on this device. Names are only kept for this game and are not saved. No accounts, tracking or ads are active. <span id="premiumSettingsSummary">${premiumSettingsSummary()}</span></p></div><div class="settings-return"><button type="button" id="settingsBack" class="btn" data-dialog-action="cancel">BACK TO THE BLUFF</button>${state.screen!=='home'?'<button type="button" id="settingsExit" class="settings-exit" onclick="requestSettingsExit()">EXIT GAME…</button>':''}</div>`,'settings');
+ const dialog=openGameDialog('settingsDialog','Behind the bluff',`<div id="settingsContent" class="settings-scroll"><p class="subtitle">Keep the confidence wildly overestimated.</p>${audioSettingsHtml()}<button type="button" id="premiumSettingsButton" class="btn premium-settings-button" onclick="openPremiumFromSettings()"><strong>More questions. More bluff.</strong><span class="premium-settings-meta">Premium · Restore purchases</span></button>${playing?'<p class="help">Your game is paused. Your typed answer and votes stay where you left them.</p>':''}<nav class="settings-links" aria-label="Help and legal information"><a href="${legalLink('privacy/')}" target="_blank" rel="noopener">Privacy Policy ↗</a><a href="${legalLink('terms/')}" target="_blank" rel="noopener">Terms of Use ↗</a><a href="${legalLink('support/')}" target="_blank" rel="noopener">Support ↗</a><a href="mailto:support@bluffle.co.uk">Email support</a></nav>${communitySettingsHtml()}<p class="help">Play stays on this device. Names are only kept for this game and are not saved. No accounts, tracking or ads are active. <span id="premiumSettingsSummary">${premiumSettingsSummary()}</span></p></div><div class="settings-return"><button type="button" id="settingsBack" class="btn" data-dialog-action="cancel">BACK TO THE BLUFF</button>${state.screen!=='home'?'<button type="button" id="settingsExit" class="settings-exit" onclick="requestSettingsExit()">EXIT GAME…</button>':''}</div>`,'settings');
  if(!dialog)return;
  const heading=$('settingsDialogTitle');heading.tabIndex=-1;heading.focus({preventScroll:true});
  const resetScroll=()=>{if(dialog.open){dialog.scrollTop=0;$('settingsContent').scrollTop=0}};
@@ -402,7 +508,7 @@ function requestSettingsExit(){
 function home(){shell(`<section class="card"><img class="hero-mask" src="${MASK_URL}" width="92" height="92" alt="Winking BLUFFLE mask"><span class="tag">TALL TALES. STRAIGHT FACES.</span><h1 class="hero">Utter nonsense.<br><span class="accent">Beautifully delivered.</span></h1><p class="subtitle">Invent a convincing answer. Sell it with a straight face. Then find out who bought it.</p><button class="btn" onclick="setup()">ASSEMBLE THE BLUFFERS →</button><details class="how-to-bluff"><summary>How to bluff<span class="how-chevron" aria-hidden="true">⌄</span></summary><div class="how-content"><p class="how-intro">One device. 3–10 players. Five rounds of highly questionable confidence.</p><ol><li><strong>Meet the question.</strong> Choose Kids or Classic, then read the question together. Change it before bluffing if you fancy a different challenge.</li><li><strong>Make something up.</strong> Pass the device around. Each player secretly writes a believable fake answer. No peeking. No need to know the truth.</li><li><strong>Find the truth.</strong> Your bluffs are mixed with the real answer. Pass the device again and vote for the answer you think is correct. You can’t vote for your own bluff.</li><li><strong>Enjoy the unmasking.</strong> See who fell for each bluff, then who wrote it. Earn <span class="how-mask">+1 mask point</span> for every player you fool, and <span class="how-tick">+1 truth point</span> for spotting the correct answer.</li><li><strong>Claim the glory.</strong> Most points after five rounds wins. A tie at the top? A quick BLUFFLE! challenge settles it. A straight face helps. A suspiciously confident voice helps more.</li></ol><p class="how-tip">Little Bluffer? offers a hint to players who need one. Turn it on beside their name during setup. Music and sound can be changed in Settings.</p></div></details><button class="btn secondary" id="premiumHomeButton" onclick="showPremium()">${premiumHomeLabel()}</button></section>`)}
 function setup(){
  clearInterval(timerHandle);timerHandle=null;clearRevealTimer();pauseReasons.clear();pausedClocks=null;
- const {mode,timerSeconds,rounds}=state;state={...freshState(),mode,timerSeconds,rounds,screen:'setup'};
+ const {timerSeconds,rounds}=state;state={...freshState(),timerSeconds,rounds,screen:'setup'};
  restoreMusicLevel();render();
 }
 
@@ -448,7 +554,7 @@ function changeQuestion(){
 }
 function isLittleBluffer(){return Boolean(state.littleHelp[state.turn])}
 
-function startAnswer(){if(state.screen!=='handoff'||state.stage!=='answer')return;state.screen='answer';state.hintOpen=false;state.timerExpired=false;state.deadline=state.timerSeconds?Date.now()+state.timerSeconds*1000:null;render();tickTimer();$('answer')?.focus()}
+function startAnswer(){if(state.screen!=='handoff'||state.stage!=='answer')return;state.screen='answer';state.hintOpen=false;state.timerExpired=false;state.deadline=state.timerSeconds?Date.now()+state.timerSeconds*1000:null;render();tickTimer();$('answer')?.focus({preventScroll:true})}
 function updateCountdown(left){const timer=$('answerTimer'),clock=$('timeLeft'),cue=$('lastSeconds'),number=$('lastSecondsNumber');if(clock)clock.textContent=left+'s';if(timer)timer.classList.toggle('urgent',left>0&&left<=10);if(cue){cue.hidden=!(left>0&&left<=10);if(number)number.textContent=String(left)}}
 function tickTimer(){
  clearInterval(timerHandle);timerHandle=null;
@@ -777,7 +883,7 @@ function renderFinalScreen(){
 function advance(){if(state.screen!=='scores')return;state.round++;if(state.round>=state.rounds){state.screen='final';render()}else nextRound()}
 function render(){cancelChampionPresentation();cancelTieBreakerClock();const s=state;switch(s.screen){
  case 'home':home();break;
- case 'setup':shell(`<section class="card"><span class="tag">ASSEMBLE YOUR SUSPECTS</span><h1 class="hero">Who’s bringing<br><span class="accent">the nonsense?</span></h1><p class="subtitle">3–10 players. Aliases welcome. Tick Little Bluffer? for anyone who’d like a nudge.</p>${s.players.map((p,i)=>`<div class="row player"><input aria-label="Player ${i+1} name" class="input" maxlength="24" autocomplete="off" spellcheck="false" placeholder="Player ${i+1}" value="${esc(p)}" oninput="updatePlayer(${i},this.value)"><label class="player-help"><input type="checkbox" aria-label="Little Bluffer? for player ${i+1}" ${s.littleHelp[i]?'checked':''} onchange="updateLittleHelp(${i},this.checked)"><span>Little Bluffer?</span></label><button type="button" class="btn secondary small" aria-label="Remove player ${i+1}" onclick="removePlayer(${i})" ${s.players.length<=3?'disabled':''}>✕</button></div>`).join('')}<button class="btn secondary" onclick="addPlayer()" ${s.players.length>=10?'disabled':''}>+ ADD A BLUFFER</button><fieldset class="mode-picker"><legend>Choose your question mode</legend>${[['kids','Kids','Gentler questions. Wild imaginations.',JUNIOR_BANK.length+FAMILY_BANK.length],['classic','Classic','The full mixed bag. Bring your poker face.',FREE_QUESTIONS]].map(([value,label,detail,count])=>`<label class="mode-choice"><input type="radio" name="questionMode" value="${value}" ${s.mode===value?'checked':''} onchange="setGameSetting('mode',this.value)"><span><strong>${label}</strong><small>${detail}<br>${ENTITLEMENTS.premium?25:5} question choices per round</small></span></label>`).join('')}</fieldset><label class="setup-label">Answer time limit<select class="input" onchange="setGameSetting('timerSeconds',Number(this.value))">${[[0,'Off — let the nonsense breathe'],[30,'30 seconds'],[60,'60 seconds'],[90,'90 seconds'],[120,'2 minutes']].map(([v,l])=>`<option value="${v}" ${s.timerSeconds===v?'selected':''}>${l}</option>`).join('')}</select></label><div class="error" role="alert">${esc(s.error)}</div><button class="btn" onclick="start()">LET THE TALL TALES BEGIN →</button></section>`);break;
+ case 'setup':shell(`<section class="card"><span class="tag">ASSEMBLE YOUR SUSPECTS</span><h1 class="hero">Who’s bringing<br><span class="accent">the nonsense?</span></h1><p class="subtitle">3–10 players. Aliases welcome. Tick Little Bluffer? for anyone who’d like a nudge.</p>${s.players.map((p,i)=>`<div class="row player"><input aria-label="Player ${i+1} name" class="input" maxlength="24" autocomplete="off" spellcheck="false" placeholder="Player ${i+1}" value="${esc(p)}" oninput="updatePlayer(${i},this.value)"><label class="player-help"><input type="checkbox" aria-label="Little Bluffer? for player ${i+1}" ${s.littleHelp[i]?'checked':''} onchange="updateLittleHelp(${i},this.checked)"><span>Little Bluffer?</span></label><button type="button" class="btn secondary small" aria-label="Remove player ${i+1}" onclick="removePlayer(${i})" ${s.players.length<=3?'disabled':''}>✕</button></div>`).join('')}<button class="btn secondary" onclick="addPlayer()" ${s.players.length>=10?'disabled':''}>+ ADD A BLUFFER</button><fieldset class="mode-picker"><legend>Choose your question mode</legend>${[['classic','Classic','The full mixed bag. Bring your poker face.',FREE_QUESTIONS],['kids','Kids','Gentler questions. Wild imaginations.',JUNIOR_BANK.length+FAMILY_BANK.length]].map(([value,label,detail,count])=>`<label class="mode-choice"><input type="radio" name="questionMode" value="${value}" ${s.mode===value?'checked':''} onchange="setGameSetting('mode',this.value)"><span><strong>${label}</strong><small>${detail}<br>${ENTITLEMENTS.premium?25:5} question choices per round</small></span></label>`).join('')}</fieldset><label class="setup-label">Answer time limit<select class="input" onchange="setGameSetting('timerSeconds',Number(this.value))">${[[0,'Off — let the nonsense breathe'],[30,'30 seconds'],[60,'60 seconds'],[90,'90 seconds'],[120,'2 minutes']].map(([v,l])=>`<option value="${v}" ${s.timerSeconds===v?'selected':''}>${l}</option>`).join('')}</select></label><div class="error" role="alert">${esc(s.error)}</div><button class="btn" onclick="start()">LET THE TALL TALES BEGIN →</button></section>`);break;
  case 'question':shell(`<section class="card question-preview">${questionChangeButton()}<span class="tag">ROUND ${s.round+1} · ${esc(s.current[0])} · ${s.mode==='kids'?'KIDS':'CLASSIC'}</span><h1>Your question</h1><div class="question">${esc(s.current[1])}</div><button class="btn" onclick="beginBluffing()">LET’S BLUFF →</button></section>`);break;
  case 'handoff':shell(`<section class="card"><span class="tag">${s.stage==='answer'?'SECRET BLUFF':'SECRET VOTE'}</span><div class="emoji" aria-hidden="true">📱</div><h1 class="hero">Over to<br><span class="accent">${esc(s.players[s.turn])}.</span></h1><p class="subtitle">${s.stage==='answer'?'Everyone else: eyes elsewhere. Genius needs privacy. So does nonsense.':'One private vote. An entirely public reckoning later.'}</p><div class="progress">${s.players.map((_,i)=>`<span class="${i<s.turn?'done':''}"></span>`).join('')}</div><button class="btn" onclick="${s.stage==='answer'?'startAnswer()':'startVote()'}">I’M ${esc(s.players[s.turn]).toUpperCase()} — NO PEEKING →</button></section>`);break;
  case 'answer':shell(`<section class="card"><span class="tag">${esc(s.current[0])} · BLUFFER ${s.turn+1}/${s.players.length}</span><div class="question">${esc(s.current[1])}</div><p class="subtitle">${esc(s.players[s.turn])}, give us something wonderfully plausible.</p>${s.timerSeconds&&(s.deadline||s.timerExpired)?`<div id="answerTimer" class="pill answer-timer">⏱ <span>Time remaining:</span> <span id="timeLeft">${s.deadline?Math.max(0,Math.ceil((s.deadline-Date.now())/1000))+'s':"Time’s up!"}</span></div>`:''}<div id="lastSeconds" class="last-seconds" hidden aria-hidden="true"><small>Seconds left</small><strong id="lastSecondsNumber"></strong></div>${isLittleBluffer()?`<button type="button" class="btn secondary" onclick="toggleHint()">💡 ${s.hintOpen?'HIDE HELP':'Little Bluffer?'}</button>${s.hintOpen?`<div class="hintbox"><strong>A little nudge…</strong><p>${esc(s.current[4]||'Invent something that sounds like it could be true.')}</p><small>Your imagination does the rest. The real answer stays secret.</small></div>`:''}`:''}<form onsubmit="event.preventDefault();answerSubmit()"><input id="answer" class="input" autocomplete="off" autocapitalize="sentences" maxlength="110" placeholder="Your finest piece of fiction…" aria-label="Your fake answer"><div id="err" class="error" role="alert"></div><button type="submit" class="btn">LOCK IN MY BLUFF 🔒</button><button type="button" id="skipAnswer" class="btn secondary" ${s.timerExpired?'':'hidden'} onclick="skipAnswer()">SKIP THIS ANSWER</button></form><p class="help">Once locked in, your bluff is hidden. Keep that face innocent.</p></section>`);break;
@@ -1097,14 +1203,14 @@ function syncMusic(){
   musicLoad=null;
   console.warn('Background music unavailable:',error.message);
   const status=document.getElementById('audioStatus');
-  if(status&&audioPrefs.music)status.textContent='Music could not load. Switch music off and on to retry. Sound effects are still available.';
+  if(status&&audioPrefs.music){status.hidden=false;status.textContent='Music could not load. Switch music off and on to retry. Sound effects are still available.'}
  });
 }
 
 function setAudioPref(kind,enabled){audioPrefs[kind]=Boolean(enabled);
  try{localStorage.setItem(AUDIO_KEY,JSON.stringify({effects:audioPrefs.effects}))}catch(e){}
  if(enabled)ensureAudio();syncMusic();
- const status=document.getElementById('audioStatus');if(status)status.textContent='Music is on only when you switch it on for this session. Your sound-effects choice is remembered.';
+ const status=document.getElementById('audioStatus');if(status){status.textContent='';status.hidden=true}
 }
 // Browsers require a user gesture before audio may play. Never autoplay on load.
 document.addEventListener('click',e=>{
@@ -1120,7 +1226,7 @@ document.addEventListener('click',e=>{
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&audioCtx)ensureAudio();syncMusic()});
 window.addEventListener('pagehide',stopMusic);
 window.addEventListener('pageshow',()=>{if(audioCtx)ensureAudio();syncMusic()});
-function audioSettingsHtml(){return `<div class="audio-settings"><h3>🎵 Sound & music</h3><label class="audio-toggle"><span>Background music</span><input type="checkbox" ${audioPrefs.music?'checked':''} onchange="setAudioPref('music',this.checked)"></label><label class="audio-toggle"><span>Sound effects</span><input type="checkbox" ${audioPrefs.effects?'checked':''} onchange="setAudioPref('effects',this.checked)"></label><p id="audioStatus" class="help">Music starts off each time you open the game. Switch it on for this session when you want it. Sound effects are on by default; your choice is remembered.</p></div>`}
+function audioSettingsHtml(){return `<div class="audio-settings"><h3>🎵 Sound & music</h3><label class="audio-toggle"><span>Background music</span><input type="checkbox" ${audioPrefs.music?'checked':''} onchange="setAudioPref('music',this.checked)"></label><label class="audio-toggle"><span>Sound effects</span><input type="checkbox" ${audioPrefs.effects?'checked':''} onchange="setAudioPref('effects',this.checked)"></label><p id="audioStatus" class="help" role="status" hidden></p></div>`}
 
-recoverSession();render();openStartup();initializePremium();
+recoverSession();render();openStartup();initializePremium();initializeKeyboard();
 </script></body></html>

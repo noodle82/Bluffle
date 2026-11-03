@@ -4,7 +4,13 @@
   "webDir": "www",
   "ios": {
     "contentInset": "never",
-    "backgroundColor": "#170f35"
+    "backgroundColor": "#170f35",
+    "zoomEnabled": false
   },
-  "backgroundColor": "#170f35"
+  "backgroundColor": "#170f35",
+  "plugins": {
+    "Keyboard": {
+      "resize": "body"
+    }
+  }
 }
