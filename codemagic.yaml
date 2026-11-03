@@ -46,6 +46,10 @@ workflows:
         script: |
           cd ios/App
           pod install
+
+      - name: Install Premium purchases and full native question bank
+        script: |
+          node scripts/apply-bluffle-premium.mjs
       - name: Compile unsigned iOS Simulator app
         script: |
           set -e
@@ -111,6 +115,10 @@ workflows:
         script: |
           cd ios/App
           pod install
+
+      - name: Install Premium purchases and full native question bank
+        script: |
+          node scripts/apply-bluffle-premium.mjs
 
       - name: Set a unique Apple build number
         script: |
