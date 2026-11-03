@@ -14,6 +14,34 @@ workflows:
         script: |
           npx cap add ios
           npx cap sync ios
+      - name: Set minimum iOS version to 15
+        script: |
+          #!/usr/bin/env bash
+          set -euo pipefail
+          cd "$CM_BUILD_DIR"
+          node <<'BLUFFLE_IOS_TARGET'
+          const fs = require('node:fs');
+          const projectPath = 'ios/App/App.xcodeproj/project.pbxproj';
+          const podfilePath = 'ios/App/Podfile';
+          const project = fs.readFileSync(projectPath, 'utf8');
+          let projectSettings = 0;
+          const updatedProject = project.replace(/\bIPHONEOS_DEPLOYMENT_TARGET\s*=\s*"?(\d+(?:\.\d+){0,2})"?\s*;/g, (match, version) => {
+            projectSettings++;
+            return Number(version.split('.')[0]) < 15 ? 'IPHONEOS_DEPLOYMENT_TARGET = 15.0;' : match;
+          });
+          if (!projectSettings) throw new Error('Could not find the native iOS deployment target.');
+          const podfile = fs.readFileSync(podfilePath, 'utf8');
+          let podPlatforms = 0;
+          const updatedPodfile = podfile.replace(/^(\s*platform\s+:ios\s*,\s*)(['"])(\d+(?:\.\d+){0,2})\2/gm, (match, prefix, quote, version) => {
+            podPlatforms++;
+            return Number(version.split('.')[0]) < 15 ? prefix + quote + '15.0' + quote : match;
+          });
+          if (!podPlatforms) throw new Error('Could not find the iOS platform in Podfile.');
+          fs.writeFileSync(projectPath, updatedProject);
+          fs.writeFileSync(podfilePath, updatedPodfile);
+          console.log('Minimum iOS version is at least 15.0 for the app and CocoaPods platform.');
+          BLUFFLE_IOS_TARGET
+
       - name: Install CocoaPods dependencies
         script: |
           cd ios/App
@@ -50,6 +78,34 @@ workflows:
         script: |
           npx cap add ios
           npx cap sync ios
+
+      - name: Set minimum iOS version to 15
+        script: |
+          #!/usr/bin/env bash
+          set -euo pipefail
+          cd "$CM_BUILD_DIR"
+          node <<'BLUFFLE_IOS_TARGET'
+          const fs = require('node:fs');
+          const projectPath = 'ios/App/App.xcodeproj/project.pbxproj';
+          const podfilePath = 'ios/App/Podfile';
+          const project = fs.readFileSync(projectPath, 'utf8');
+          let projectSettings = 0;
+          const updatedProject = project.replace(/\bIPHONEOS_DEPLOYMENT_TARGET\s*=\s*"?(\d+(?:\.\d+){0,2})"?\s*;/g, (match, version) => {
+            projectSettings++;
+            return Number(version.split('.')[0]) < 15 ? 'IPHONEOS_DEPLOYMENT_TARGET = 15.0;' : match;
+          });
+          if (!projectSettings) throw new Error('Could not find the native iOS deployment target.');
+          const podfile = fs.readFileSync(podfilePath, 'utf8');
+          let podPlatforms = 0;
+          const updatedPodfile = podfile.replace(/^(\s*platform\s+:ios\s*,\s*)(['"])(\d+(?:\.\d+){0,2})\2/gm, (match, prefix, quote, version) => {
+            podPlatforms++;
+            return Number(version.split('.')[0]) < 15 ? prefix + quote + '15.0' + quote : match;
+          });
+          if (!podPlatforms) throw new Error('Could not find the iOS platform in Podfile.');
+          fs.writeFileSync(projectPath, updatedProject);
+          fs.writeFileSync(podfilePath, updatedPodfile);
+          console.log('Minimum iOS version is at least 15.0 for the app and CocoaPods platform.');
+          BLUFFLE_IOS_TARGET
 
       - name: Install CocoaPods dependencies
         script: |
