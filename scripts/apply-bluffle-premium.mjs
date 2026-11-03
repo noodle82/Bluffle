@@ -6,13 +6,13 @@ const root = process.cwd();
 const source = path.join(root, '_bluffle-native');
 const app = path.join(root, 'ios/App/App');
 const bank = JSON.parse(fs.readFileSync(path.join(source, 'bluffle-premium-questions.json'), 'utf8'));
-if (bank.productId !== 'com.bluffle.premium_lifetime' || bank.uniqueCount !== 360 ||
+if (bank.productId !== 'com.bluffle.premium_lifetime' || bank.uniqueCount !== 361 ||
     bank.kids.length !== 125 || bank.classic.length !== 254) throw Error('Unexpected Premium bank.');
 for (const mode of ['kids', 'classic']) {
   if (bank[mode].some(q => !Array.isArray(q) || q.length !== 6 || q.some(v => typeof v !== 'string')) ||
       new Set(bank[mode].map(q => q[5])).size !== bank[mode].length) throw Error('Invalid '+mode+' Premium records.');
 }
-if (new Set([...bank.kids, ...bank.classic].map(q => q[5])).size !== 360) throw Error('Premium union count differs.');
+if (new Set([...bank.kids, ...bank.classic].map(q => q[5])).size !== 361) throw Error('Premium union count differs.');
 for (const file of ['BlufflePremium.swift', 'bluffle-premium-questions.json']) {
   fs.copyFileSync(path.join(source, file), path.join(app, file));
 }
@@ -36,4 +36,4 @@ if (plist.includes('<key>ITSAppUsesNonExemptEncryption</key>')) {
 }
 fs.writeFileSync(plistPath, plist);
 execFileSync('ruby', [path.join(root, 'scripts/register-bluffle-premium.rb')], {cwd: root, stdio: 'inherit'});
-console.log('BLUFFLE native Premium purchase bridge and 360 questions installed.');
+console.log('BLUFFLE native Premium purchase bridge and 361 questions installed.');

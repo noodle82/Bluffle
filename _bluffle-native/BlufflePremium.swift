@@ -63,13 +63,13 @@ public class BlufflePremium: CAPPlugin, CAPBridgedPlugin {
         guard let url = Bundle.main.url(forResource: "bluffle-premium-questions", withExtension: "json"),
               let bank = try JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any],
               bank["productId"] as? String == productID,
-              bank["uniqueCount"] as? Int == 360,
+              bank["uniqueCount"] as? Int == 361,
               let kids = bank["kids"] as? [[String]], kids.count == 125,
               let classic = bank["classic"] as? [[String]], classic.count == 254,
               (kids + classic).allSatisfy({ $0.count == 6 && !$0[5].isEmpty }),
               Set(kids.map { $0[5] }).count == 125,
               Set(classic.map { $0[5] }).count == 254,
-              Set((kids + classic).map { $0[5] }).count == 360 else {
+              Set((kids + classic).map { $0[5] }).count == 361 else {
             throw NSError(domain: "BLUFFLE", code: 1,
                           userInfo: [NSLocalizedDescriptionKey: "The Premium questions could not be loaded. Please update the app or contact support."])
         }
