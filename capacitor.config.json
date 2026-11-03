@@ -3,6 +3,8 @@
   "appName": "BLUFFLE!",
   "webDir": "www",
   "ios": {
-    "contentInset": "automatic"
-  }
+    "contentInset": "never",
+    "backgroundColor": "#170f35"
+  },
+  "backgroundColor": "#170f35"
 }
