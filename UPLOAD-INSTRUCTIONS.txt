@@ -1,0 +1,25 @@
+BLUFFLE WEBSITE UPDATE
+
+This package replaces the old homepage redirect with a two-game homepage.
+Sofa Heist is served from /sofa-heist/.
+
+1. Unzip this package.
+2. Open https://github.com/noodle82/Bluffle on the main branch.
+3. Choose Add file > Upload files.
+4. Upload index.html AND the whole sofa-heist folder from this package.
+   Do not upload this outer bluffle-site-update folder itself.
+5. Confirm the uploaded paths are index.html and sofa-heist/...
+6. Commit the update and wait for GitHub Pages publishing to finish.
+
+CHECK:
+https://www.bluffle.co.uk/ should show the new games homepage.
+https://www.bluffle.co.uk/sofa-heist/ should open Sofa Heist.
+The FABRICATE button should open https://www.fabricategame.com/.
+
+The package does not change CNAME, DNS, the existing app, privacy/support
+pages, or existing GitHub workflows. Keep those existing files in place.
+GitHub's upload form replaces the existing root index.html; that is the
+intentional change that removes the old automatic redirect.
+
+The separate Sofa Heist source-code package can still be uploaded to a
+new repository for development. This package contains the built website.
