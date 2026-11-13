@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0f1b2d">
+  <meta name="description" content="A silly story. Secret names. Two rival sofas. A free family party game for 6–20 people, with 20 funny stories and one phone.">
+  <meta name="color-scheme" content="dark">
+  <title>Sofa Heist — A little story. A lot of sofa swapping.</title>
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the game</a>
+  <div class="app-shell">
+    <header class="site-header">
+      <a href="#home" class="brand" aria-label="Sofa Heist home"><img src="./assets/sofa-heist-logo.png" alt="Sofa Heist" width="93" height="64"><span class="brand-byline">A BLUFFLE GAME</span></a>
+      <nav aria-label="Main navigation"><button class="nav-link" data-action="library">The stories <span class="nav-count">20</span></button><button class="nav-link" data-action="rules">How to play</button><button class="nav-cta" data-action="new-game">Let’s play <span aria-hidden="true">↗</span></button></nav>
+    </header>
+    <main id="main" tabindex="-1"></main>
+    <footer class="site-footer"><span>Small screen. Big sofa energy.</span><div><button data-action="privacy">Privacy</button><a href="https://bluffle.co.uk">More from BLUFFLE <span aria-hidden="true">↗</span></a><span class="version">v1.0</span></div></footer>
+  </div>
+  <dialog id="confirm-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description"><form method="dialog"><div class="eyebrow">A QUICK CHECK</div><h2 id="dialog-title"></h2><p id="dialog-description"></p><div class="dialog-actions"><button value="cancel" class="button secondary" id="dialog-cancel">Keep playing</button><button value="confirm" class="button" id="dialog-confirm">Yes, continue</button></div></form></dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><div class="noscript">Sofa Heist needs JavaScript to mix your names into a story. Please enable it, then reload.</div></noscript>
+</body>
+</html>
