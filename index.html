@@ -1,11 +1,39 @@
 <!doctype html>
-<html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#051429"><meta name="description" content="Naughty Elf Village: each child’s own illustrated Christmas adventure. Living fluffy friends, tactile elf gifts, 26 games, riddles and secret missions."><title>JollyBOX — Naughty Elf Village | Christmas Advent Calendar</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="play-lab.css"><link rel="stylesheet" href="adventure-v3.css"><link rel="stylesheet" href="elf-club.css"><link rel="stylesheet" href="christmas-card.css"><link rel="stylesheet" href="slick-ui.css"><link rel="stylesheet" href="elf-interiors.css"><link rel="stylesheet" href="secret-village.css"><link rel="stylesheet" href="jollybox.css"><link rel="stylesheet" href="midnight-opening.css"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" href="assets/jollybox-icon-192.png"><link rel="apple-touch-icon" href="assets/jollybox-touch-icon.png"></head>
-<body><script>document.body.classList.add('jolly-boot')</script>
-<div class="snowfall" aria-hidden="true"></div>
-<header class="topbar"><a href="#calendar" class="brand"><span class="brand-star">✦</span><span>merry little magic<small>BIG LITTLE CHRISTMAS ADVENTURES</small></span></a><nav aria-label="Main navigation"><button data-view="calendar" class="nav-button active">The magic doors</button><button data-view="toys" class="nav-button">Wonder shelf <span id="toy-count">0</span></button><button data-view="games" class="nav-button">Play club <span id="game-count">0</span></button></nav><button id="sound" class="icon-button" aria-label="Turn sound on" title="Turn sound on">♫<span class="sound-off">×</span></button></header>
-<main id="main"></main>
-<footer><span>Made of little moments & a little Christmas magic.</span><button id="settings">Grown-up corner <span>↗</span></button></footer>
-<dialog id="modal" aria-labelledby="modal-title"><button class="close" aria-label="Close dialog">×</button><div id="modal-content"></div></dialog><div id="toast" role="status"></div>
-<script src="data.js"></script><script src="play-data.js"></script><script src="baby-assets.js"></script><script src="living-assets.js"></script><script src="app.js"></script><script src="toys-plus.js"></script><script src="games-studio.js"></script><script src="games-plus.js"></script><script src="adventure-v3.js"></script><script src="christmas-village.js"></script><script src="arcade-bonus.js"></script><script src="elf-club.js"></script><script src="christmas-card.js"></script><script src="living-nursery.js"></script><script src="soft-toy-renderer.js"></script><script src="premium-fidgets.js"></script><script src="premium-worlds.js"></script><script src="premium-thumbnails.js"></script><script src="penguin-nest.js"></script><script src="snowball-bowling.js"></script><script src="child-profiles.js"></script><script src="ready-pet-assets.js"></script><script src="nursery-recovery.js"></script><script src="immersive-hideout.js"></script><script src="arcade-preview-assets.js"></script><script src="elf-interiors.js"></script><script src="secret-village.js"></script><script src="midnight-opening.js"></script><script src="jollybox.js"></script><script>render();if(location.hash==='#secret')secretPuzzle();addEventListener('hashchange',()=>{if(location.hash==='#secret')secretPuzzle()});</script>
-</body></html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0f1b2d">
+  <meta name="description" content="Good company. Great nonsense. Choose Sofa Heist or FABRICATE for your next game night.">
+  <title>BLUFFLE — Good company. Great nonsense.</title>
+  <link rel="icon" href="./sofa-heist/assets/icon.svg" type="image/svg+xml">
+  <style>
+    @font-face{font-family:Inter;src:url('./sofa-heist/assets/fonts/inter-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
+    @font-face{font-family:Inter;src:url('./sofa-heist/assets/fonts/inter-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap}
+    @font-face{font-family:Rubik;src:url('./sofa-heist/assets/fonts/rubik-latin-900-normal.woff2') format('woff2');font-weight:900;font-display:swap}
+    :root{color-scheme:dark;font:16px/1.7 Inter,system-ui,sans-serif;background:#0f1b2d;color:#f7f3e6}*{box-sizing:border-box}body{margin:0}a{color:inherit}a:focus-visible{outline:3px solid #7fd1d9;outline-offset:6px}.wrap{max-width:1120px;margin:auto;padding:0 32px}header{padding:28px 0;border-bottom:1px solid #f7f3e624;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font:900 25px Rubik,system-ui,sans-serif;letter-spacing:-1px;text-decoration:none}.brand span{color:#ffc629}.strap{font-size:11px;letter-spacing:.12em;color:#b9c3cc}main{padding:65px 0 55px}.eyebrow{color:#7fd1d9;font-size:11px;letter-spacing:.14em;margin-bottom:20px}h1{font:900 clamp(36px,5.5vw,64px)/1.09 Rubik,system-ui,sans-serif;letter-spacing:-.04em;max-width:800px;margin:0}h1 em{font-style:normal;color:#ffc629}.lede{color:#b9c3cc;max-width:550px;font-size:17px;margin:24px 0 40px}.games{display:grid;grid-template-columns:1fr 1fr;gap:24px}.game{background:#14263f;border:1px solid #f7f3e624;border-radius:24px;overflow:hidden;display:flex;flex-direction:column}.art{height:225px;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,#21476077,transparent 75%);padding:20px}.art img{width:300px;height:205px;object-fit:contain}.fabricate-art{background:#ffc629;color:#0f1b2d;position:relative;overflow:hidden}.fabricate-word{font:900 clamp(32px,5vw,57px)/1 Rubik,system-ui,sans-serif;letter-spacing:-.04em;transform:rotate(-5deg)}.fabricate-word:after{content:'BELIEVABLE NONSENSE.';display:block;font:700 11px Inter,system-ui,sans-serif;letter-spacing:.2em;text-align:center;margin-top:17px}.copy{padding:28px;display:flex;flex-direction:column;flex:1;gap:15px}.tag{color:#7fd1d9;font-size:10px;letter-spacing:.12em}.game h2{font:900 29px/1.1 Rubik,system-ui,sans-serif;letter-spacing:-.03em;margin:0}.game p{color:#b9c3cc;font-size:14px;line-height:1.9;margin:0 0 8px}.play{display:flex;align-items:center;justify-content:space-between;background:#ffc629;color:#0f1b2d;border-radius:999px;text-decoration:none;font-weight:700;font-size:14px;min-height:53px;padding:12px 23px;margin-top:auto}.play.teal{background:#7fd1d9}.play:hover{filter:brightness(1.1)}footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid #f7f3e624;padding:25px 0;color:#b9c3cc;font-size:11px}footer a{text-underline-offset:4px}.small{font-size:12px;color:#b9c3cc;margin:28px 0 0}@media(max-width:650px){.wrap{padding:0 22px}header{padding:23px 0}.strap{font-size:9px;max-width:130px;text-align:right}main{padding:40px 0}.games{grid-template-columns:1fr;gap:22px}.lede{font-size:15px;margin:22px 0 30px}.art{height:205px}.fabricate-word{font-size:46px}.copy{padding:24px}footer{flex-direction:column;gap:10px}h1{font-size:clamp(35px,9vw,52px)}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header><a class="brand" href="./" aria-label="BLUFFLE home">BLUFFLE<span>.</span></a><span class="strap">GOOD COMPANY.<br>GREAT NONSENSE.</span></header>
+    <main>
+      <div class="eyebrow">MAKE ROOM FOR A LITTLE RIDICULOUS.</div>
+      <h1>Good people.<br>Excellent games.<br><em>Questionable poker faces.</em></h1>
+      <p class="lede">Put the kettle on. Gather your favourite people. Choose your particular flavour of nonsense.</p>
+      <div class="games">
+        <article class="game">
+          <div class="art"><img src="./sofa-heist/assets/sofa-scene.svg" alt="Two rival sofas and a cushion in disguise" width="300" height="205"></div>
+          <div class="copy"><span class="tag">6–20 PEOPLE · ONE PHONE · FAMILY FRIENDLY</span><h2>Sofa Heist</h2><p>Secret identities. One ridiculous story. Two sofas trying to remember who’s who. Guess right and steal a player. The cushions are collateral damage.</p><a class="play" href="./sofa-heist/">Play Sofa Heist <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="game">
+          <div class="art fabricate-art" aria-hidden="true"><span class="fabricate-word">FABRICATE!</span></div>
+          <div class="copy"><span class="tag">THE PARTY GAME OF BELIEVABLE NONSENSE</span><h2>FABRICATE!</h2><p>A little confidence. A very straight face. A splendid amount of nonsense. Head over to FABRICATE and put your powers of persuasion to work.</p><a class="play teal" href="https://www.fabricategame.com/">Play FABRICATE! <span aria-hidden="true">↗</span></a></div>
+        </article>
+      </div>
+      <p class="small">No automatic detours. Just pick a game and make a night of it.</p>
+    </main>
+    <footer><span>Small screens. Very good company.</span><div><a href="./sofa-heist/">Sofa Heist</a> &nbsp;·&nbsp; <a href="https://www.fabricategame.com/">FABRICATE!</a></div></footer>
+  </div>
+</body>
+</html>
